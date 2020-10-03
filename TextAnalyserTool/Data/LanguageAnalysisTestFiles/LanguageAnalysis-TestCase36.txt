@@ -1,0 +1,5 @@
+nor
+or
+neither
+and
+but

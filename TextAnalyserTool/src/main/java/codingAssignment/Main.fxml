@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="850.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codingAssignment.GUI">
+   <children>
+      <Label alignment="CENTER" layoutY="9.0" prefHeight="66.0" prefWidth="743.0" text="Text Analyser" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="inputBackgroundBox" arcHeight="5.0" arcWidth="5.0" fill="#eaeaea" height="193.0" layoutY="85.0" stroke="#eaeaea" strokeType="INSIDE" width="743.0" />
+      <Button fx:id="WordAnalysis" layoutX="194.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayWordAnalysis" prefHeight="31.0" prefWidth="118.0" text="Word Analysis" />
+      <Button fx:id="sentimentAnalysisButton" layoutX="329.0" layoutY="341.0" mnemonicParsing="false" onAction="#displaySentimentAnalysis" text="Sentiment Analysis" />
+      <Button fx:id="characterAnalysisButton" layoutX="36.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayCharacterAnalysis" text="Character Analysis" />
+      <Button layoutX="35.0" layoutY="143.0" mnemonicParsing="false" onAction="#getFilePath" text="Select Text File" />
+      <Label layoutX="36.0" layoutY="187.0" text="OR" />
+      <Label layoutX="36.0" layoutY="100.0" text="Please select your text import method:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="297.0" text="Please select the type of analysis you would like to perform:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="partsOfSpeechAnalysisButton" layoutX="491.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayPartsOfSpeechAnalysis" text="Parts of Speech Analysis" />
+   </children>
+</AnchorPane>

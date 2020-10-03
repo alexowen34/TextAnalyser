@@ -1,0 +1,111 @@
+/* primary: https://colorhunt.co/palette/117601 */
+/* secondary: https://colorhunt.co/palette/118962 */
+
+.root {
+	-fx-background-color: #232931;
+}
+
+#inputBackgroundBox, #analysisBackgroundBox {
+	-fx-fill: #283149;
+	-fx-stroke: #283149;
+}
+
+.text-field {
+	-fx-background-color: #232931;
+	-fx-text-inner-color: white;
+    -fx-prompt-text-fill: white;
+}
+
+.text-area {
+	-fx-background-color: #232931;
+	-fx-border-color: #232931;
+	-fx-text-inner-color: white;
+}
+
+.text-area .content {
+ -fx-background-color: #232931;
+}
+
+
+.button, .toggle-button, .combo-box .list-cell {
+	-fx-background-color: #393e46;
+	-fx-text-fill: white;
+}
+
+.combo-box {
+    -fx-background-insets: 0 0 0 0,0, 1, 2;
+}
+
+.combo-box .arrow {
+    -fx-background-color: white;
+}
+
+.combo-box .arrow-button {
+	-fx-background-color: #232931;
+}
+
+.combo-box .list-cell:hover, .button:hover {
+    -fx-background-color: #404b69;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2B545E;
+}
+
+.label {
+	-fx-text-fill: white;
+}
+
+.chart-plot-background, .pie-chart {
+	-fx-background-color: transparent;	
+}
+
+.chart-bar {
+    -fx-bar-fill: #00818a;
+}
+
+.chart-pie {
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+}
+
+.chart-pie-label {
+    -fx-fill: white;
+}
+
+.axis {
+	-fx-tick-label-fill: white;
+}
+
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #232931;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #393e46;
+}
+
+.scroll-bar, .corner {
+	-fx-background-color: #232931;
+}
+
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+	-fx-background-color: #404b69;
+}
