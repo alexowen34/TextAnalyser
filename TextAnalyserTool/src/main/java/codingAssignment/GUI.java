@@ -1,9 +1,10 @@
 //TO DO:
 
-//#1: Sort out issue where in Sentiment Analysis table view - when click on POS - the PieChart button still shows for sentiment and then when go back to sentiment view the piechart button shows first instead of the table view button.
-//#2: Sort out issue where button to go back to char analysis bar char isn't working from pie chart view
-//#3: Sort out tests
-//#4: Organise back end to make it more efficent
+//#1: Sort out tests
+//#2: Organise back end to make it more efficent
+//#3: Comment code
+//#4: Add scroll bar
+//#5: Media queries in CSS
 
 package codingAssignment;
 
@@ -49,7 +50,7 @@ public class GUI extends Application
 	protected static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
 	protected static String charactersInScope = fullListOfReferenceCharacters;
 	private String textToBeAnalysed = "";
-	private LanguageAnalysis langAnalysis;
+	private static LanguageAnalysis langAnalysis;
 	private static CharacterAnalysis charAnalysis;
 	private boolean decimalPlaceChange;
 	private boolean charAnalysisPieChartVisible;
@@ -133,8 +134,8 @@ public class GUI extends Application
         popOutBarChart.setLayoutY(586); 
         popOutBarChart.setOnAction(e -> popOutBarChart(e));
         
-        displayCharacterPieChart.setLayoutX(653); 
-        displayCharacterPieChart.setLayoutY(586); 
+        displayCharacterPieChart.setLayoutX(653);
+        displayCharacterPieChart.setLayoutY(586);
         displayCharacterPieChart.setOnAction(e -> displayCharacterPieChart(e));
         
         displayCharacterBarChart.setLayoutX(653); 
@@ -298,8 +299,8 @@ public class GUI extends Application
         root.getChildren().add(displaySentimentPieChart);
         root.getChildren().add(popOutBarChart);
         root.getChildren().add(displayCharacterPieChart);
-        root.getChildren().add(displayCharacterBarChart);
         root.getChildren().add(characterPieChartHeader);
+        root.getChildren().add(displayCharacterBarChart);
         Scene scene = new Scene(root);
         darkModeActivate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -427,7 +428,7 @@ public class GUI extends Application
 		displayUsersText();
     	if(emptyTextError()) {}
     	else {
-    		if(event.getSource().toString().contains("Button[id=characterAnalysisButton"))
+    		if(event.getSource().toString().contains("Character Analysis"))
     		{
     			sortingOption = 1;
     			characterPieChartHeader.setVisible(false);
@@ -541,7 +542,7 @@ public class GUI extends Application
     	displayUsersText();
     	if(emptyTextError()) {}
     	else {
-    		if(event.getSource().toString().contains("Button[id=sentimentAnalysisButton"))
+    		if(event.getSource().toString().contains("Sentiment Analysis"))
     		{
     			addDecimal.setDisable(false);
     			removeDecimal.setDisable(false);
@@ -612,6 +613,7 @@ public class GUI extends Application
             sentimentAnalysisPieChart.setVisible(false);
             sentimentResultsHeader.setVisible(false);
             displaySentimentTable.setVisible(false);
+            displaySentimentPieChart.setVisible(false);
 			addDecimal.setDisable(true);
 			removeDecimal.setDisable(true);
             sortDescButton.setDisable(true);
@@ -652,7 +654,6 @@ public class GUI extends Application
     }
     
     public void displaySentimentPieChart(ActionEvent event)
-
     {
         removeDecimal.setDisable(false);
         addDecimal.setDisable(false);

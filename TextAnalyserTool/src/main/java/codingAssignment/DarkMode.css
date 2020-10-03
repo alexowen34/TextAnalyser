@@ -5,7 +5,7 @@
 	-fx-background-color: #232931;
 }
 
-#inputBackgroundBox, #analysisBackgroundBox {
+#inputBackgroundBox {
 	-fx-fill: #283149;
 	-fx-stroke: #283149;
 }

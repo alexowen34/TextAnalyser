@@ -146,7 +146,7 @@ public class LanguageAnalysis extends StringToAnalyse
 	public void partsOfSpeechAnalsis() throws FileNotFoundException
 	{	
 		HashMap<String, String> POStagsAndDescriptions = new HashMap<String, String>();
-		HandleTextFiles POStagsFromTxtFile = new HandleTextFiles("Data/POStags.txt");
+		HandleTextFiles POStagsFromTxtFile = new HandleTextFiles("AppInputData/POStags.txt");
 		POStagsAndDescriptions = POStagsFromTxtFile.fileToHashMap();
 		NLPpipeline pipeline = new NLPpipeline(propertiesForNLP);
 		StanfordCoreNLP grammar = pipeline.getPipeline();

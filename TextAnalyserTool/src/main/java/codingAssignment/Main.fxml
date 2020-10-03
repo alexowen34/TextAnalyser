@@ -14,9 +14,10 @@
          </font>
       </Label>
       <Rectangle fx:id="inputBackgroundBox" arcHeight="5.0" arcWidth="5.0" fill="#eaeaea" height="193.0" layoutY="85.0" stroke="#eaeaea" strokeType="INSIDE" width="743.0" />
-      <Button fx:id="WordAnalysis" layoutX="194.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayWordAnalysis" prefHeight="31.0" prefWidth="118.0" text="Word Analysis" />
-      <Button fx:id="sentimentAnalysisButton" layoutX="329.0" layoutY="341.0" mnemonicParsing="false" onAction="#displaySentimentAnalysis" text="Sentiment Analysis" />
-      <Button fx:id="characterAnalysisButton" layoutX="36.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayCharacterAnalysis" text="Character Analysis" />
+      <Button layoutX="36.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayCharacterAnalysis" text="Character Analysis" />
+      <Button layoutX="194.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayWordAnalysis" prefHeight="31.0" prefWidth="118.0" text="Word Analysis" />
+      <Button layoutX="329.0" layoutY="341.0" mnemonicParsing="false" onAction="#displaySentimentAnalysis" text="Sentiment Analysis" />
+      <Button layoutX="491.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayPartsOfSpeechAnalysis" text="Parts of Speech Analysis" />
       <Button layoutX="35.0" layoutY="143.0" mnemonicParsing="false" onAction="#getFilePath" text="Select Text File" />
       <Label layoutX="36.0" layoutY="187.0" text="OR" />
       <Label layoutX="36.0" layoutY="100.0" text="Please select your text import method:">
@@ -29,6 +30,5 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="partsOfSpeechAnalysisButton" layoutX="491.0" layoutY="341.0" mnemonicParsing="false" onAction="#displayPartsOfSpeechAnalysis" text="Parts of Speech Analysis" />
    </children>
 </AnchorPane>
