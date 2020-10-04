@@ -1,10 +1,12 @@
 //TO DO:
 
-//#1: Sort out tests
+//#1: Sort out issue with importing text from text file - can't sort, add decimals etc.
 //#2: Organise back end to make it more efficent
-//#3: Comment code
+//#3  Comment code
 //#4: Add scroll bar
 //#5: Media queries in CSS
+//#6: Sort out tests
+//#7: Practice writing data to a DB
 
 package codingAssignment;
 
@@ -95,7 +97,7 @@ public class GUI extends Application
         launch();
     }
     
-    public void setupButtons()
+    private void setupButtons()
     {
     	int prefHeight = 32, prefWidth = 54;
     	for(int i = 0; i < arrayOfButtons.length; i++)
@@ -143,7 +145,7 @@ public class GUI extends Application
         displayCharacterBarChart.setOnAction(e -> displayCharacterBarChart(e));
     }
 
-    public void addIconsToButtons(String[] filePaths)
+    private void addIconsToButtons(String[] filePaths)
     {
         Image[] img = new Image[filePaths.length];
         ImageView[] view = new ImageView[filePaths.length];
@@ -163,7 +165,7 @@ public class GUI extends Application
         }
     }
     
-    public void setUpLabels()
+    private void setUpLabels()
     {
         importFileSuccessMessage.setLayoutX(167); importFileSuccessMessage.setLayoutY(148);
         importFileSuccessMessage.setStyle("-fx-text-fill: #12a454");
@@ -204,7 +206,7 @@ public class GUI extends Application
         characterPieChartHeader.setText("Summary of Character Types");
     }
     
-    public void setUpCharts()
+    private void setUpCharts()
     {
     	characterAnalysisPieChart.setLayoutX(36); characterAnalysisPieChart.setLayoutY(617);
         characterAnalysisPieChart.setPrefHeight(278); characterAnalysisPieChart.setPrefWidth(673);
@@ -217,7 +219,7 @@ public class GUI extends Application
     }
     
     @SuppressWarnings("unchecked")
-	public void setUpTables()
+	private void setUpTables()
     {
     	sentimentAnalysisTable.setLayoutX(36); sentimentAnalysisTable.setLayoutY(631);
         sentimentAnalysisTable.setPrefHeight(250); sentimentAnalysisTable.setPrefWidth(673);
@@ -238,7 +240,7 @@ public class GUI extends Application
         partsOfSpeechAnalysisTable.getColumns().addAll(POStag, word);
     }
     
-    public void setUpComboBoxs()
+    private void setUpComboBoxs()
     {
         filteringOptionsBox.setLayoutX(318); filteringOptionsBox.setLayoutY(533);
         filteringOptionsBox.setPrefHeight(31); filteringOptionsBox.setPrefWidth(163);
@@ -327,7 +329,7 @@ public class GUI extends Application
     }
     
     @FXML
-    public void initialize() 
+    private void initialize() 
     {
     	importFileSuccessMessage.setVisible(false);
         analysisBackgroundBox.setVisible(false);
@@ -643,7 +645,7 @@ public class GUI extends Application
     	}
     }
     
-    public void displaySentimentTable(ActionEvent event)
+    private void displaySentimentTable(ActionEvent event)
     {
         removeDecimal.setDisable(true);
         addDecimal.setDisable(true);
@@ -653,7 +655,7 @@ public class GUI extends Application
     	sentimentAnalysisPieChart.setVisible(false);
     }
     
-    public void displaySentimentPieChart(ActionEvent event)
+    private void displaySentimentPieChart(ActionEvent event)
     {
         removeDecimal.setDisable(false);
         addDecimal.setDisable(false);
@@ -663,7 +665,7 @@ public class GUI extends Application
     	sentimentAnalysisPieChart.setVisible(true);
     }
     
-    public void displayCharacterBarChart(ActionEvent event)
+    private void displayCharacterBarChart(ActionEvent event)
     {
     	characterPieChartHeader.setVisible(false);
     	characterBarChartHeader.setVisible(true);
@@ -689,7 +691,7 @@ public class GUI extends Application
     	}
     }
     
-    public void displayCharacterPieChart(ActionEvent event)
+    private void displayCharacterPieChart(ActionEvent event)
     {
     	characterBarChartHeader.setVisible(false);
     	characterPieChartHeader.setVisible(true);
@@ -704,7 +706,7 @@ public class GUI extends Application
     	percentageOptionsBox.setDisable(true);
     }
    
-    public void decreaseDecimalPlaces(ActionEvent event)
+    private void decreaseDecimalPlaces(ActionEvent event)
     {
     	decimalPlaceChange = true;
     	if(numberOfDecimalPlaces > 0)
@@ -732,7 +734,7 @@ public class GUI extends Application
     	decimalPlaceChange = false;
     }
     
-    public void increaseDecimalPlaces(ActionEvent event)
+    private void increaseDecimalPlaces(ActionEvent event)
     {
     	decimalPlaceChange = true;
     	if(numberOfDecimalPlaces >= 0 && numberOfDecimalPlaces < 10)
@@ -760,7 +762,7 @@ public class GUI extends Application
     	decimalPlaceChange = false;
     }
    
-	public void sortDesc(ActionEvent event)
+	private void sortDesc(ActionEvent event)
     {
     	sortingOption = 2;
     	try {
@@ -783,7 +785,7 @@ public class GUI extends Application
     	}
     }
 	
-	public void sortAsc(ActionEvent event)
+	private void sortAsc(ActionEvent event)
     {
     	sortingOption = 3;
     	try {
@@ -806,7 +808,7 @@ public class GUI extends Application
     	}
     }
 	
-	public void filterCharacters(ActionEvent event)
+	private void filterCharacters(ActionEvent event)
 	{
 		filteringOptionsBoxDisable = false;
 		sortAscDisable = false;
@@ -837,7 +839,7 @@ public class GUI extends Application
 		displayCharacterAnalysis(event);
 	}
 	
-	public void percentageCalculation(ActionEvent event)
+	private void percentageCalculation(ActionEvent event)
 	{
 		switch(percentageOptionsBox.getValue())
 		{
@@ -850,7 +852,7 @@ public class GUI extends Application
 	}
 
 	@SuppressWarnings("unchecked")
-	public void popOutBarChart(ActionEvent event)
+	private void popOutBarChart(ActionEvent event)
 	{
 		CategoryAxis x = new CategoryAxis();
 		NumberAxis y = new NumberAxis();
