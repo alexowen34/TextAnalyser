@@ -1,9 +1,10 @@
 //TO DO:
 
 //#1: Organise back end to make it more efficent
-//#2: Comment code
-//#3: Sort out tests
+//#2: Sort out tests
+//#3: Comment code
 //#4: Practice writing data to a DB
+//#5: look at move from super class to interface
 
 package codingAssignment;
 

@@ -30,7 +30,6 @@ public class CharacterAnalysis extends StringToAnalyse
 	private char[] referenceCharactersForTable;
 
 	//Below variables are populated via methods in this class.
-	private String decimalPlacesString;
 	private int[] countFrequencyOutput;
 	private int [] summaryCount;
 	private double[] percentageFrequencyOutput;
@@ -196,8 +195,7 @@ public class CharacterAnalysis extends StringToAnalyse
 		{
 			referenceCharactersForBarChart[i] = String.valueOf(referenceCharactersForTable[i]);
 		}
-		XYChart.Series<String, Number> barChart = new XYChart.Series<>();
-		decimalPlace();		
+		XYChart.Series<String, Number> barChart = new XYChart.Series<>();	
 		for(int i = 0; i < countFrequencyOutput.length; i++)
 		{
 			if(countFrequencyOutput[i] != 0)
@@ -211,7 +209,8 @@ public class CharacterAnalysis extends StringToAnalyse
     private XYChart.Data<String, Number> createData(String country, int value, int counter) 
     {
         XYChart.Data<String, Number> data =  new XYChart.Data<String, Number>(country, value);
-        DecimalFormat round = new DecimalFormat(decimalPlacesString);
+		DecimalPlaces stringRep = new DecimalPlaces();
+		DecimalFormat round = new DecimalFormat(stringRep.stringRepresentationOfDecimals());
         String text = String.valueOf(round.format(percentageFrequencyOutput[counter])+"%");
         StackPane node = new StackPane();
         Label label = new Label(text);
@@ -228,8 +227,8 @@ public class CharacterAnalysis extends StringToAnalyse
     
 	public ObservableList<Data> pieChartData()
 	{
-		decimalPlace();
-		DecimalFormat round = new DecimalFormat(decimalPlacesString);
+		DecimalPlaces stringRep = new DecimalPlaces();
+		DecimalFormat round = new DecimalFormat(stringRep.stringRepresentationOfDecimals());
 		for(int i = 0; i < rowDescription.length; i++)
 		{
 			rowDescription[i] += " ("+String.valueOf(round.format(summaryPercentage[i]))+"%)";
@@ -257,20 +256,6 @@ public class CharacterAnalysis extends StringToAnalyse
 			rowDescription[i] = rowDescription[i].trim();
 		}
 		return list;
-	}
-    
-	private String decimalPlace()
-	{
-		String decimalPlacesString = "0";
-		if(GUI.numberOfDecimalPlaces > 0)
-		{
-			decimalPlacesString = "0.";
-			for(int i = 1; i <= GUI.numberOfDecimalPlaces; i++)
-			{
-				decimalPlacesString += "0";
-			}
-		}
-		return this.decimalPlacesString = decimalPlacesString;
 	}
 }
 

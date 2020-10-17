@@ -32,7 +32,6 @@ public class LanguageAnalysis extends StringToAnalyse
 	private String propertiesForNLP;
 
 	//Below variables are populated via methods in this class.
-	private String decimalPlacesString;
 	private int [] summaryCount;
 	private double [] summaryPercentage;
 	private String[] sentencesArray;
@@ -250,29 +249,10 @@ public class LanguageAnalysis extends StringToAnalyse
 		return summaryPercentage;
 	}
 	
-	/*
-	 * This method handles how many decimal places to round to by adding zeros to the end of the string if user asks for more than 0 decimal places.
-	 * It returns the string with the number of decimal places in which is then used by the 'highLevelTable' and 'lowLevelTable' methods.
-	 * The string returned will be used as a parameter when creating a new instance of the DecimalFormat class.
-	 */
-	private String decimalPlace()
-	{
-		String decimalPlacesString = "0";
-		if(GUI.numberOfDecimalPlaces > 0)
-		{
-			decimalPlacesString = "0.";
-			for(int i = 1; i <= GUI.numberOfDecimalPlaces; i++)
-			{
-				decimalPlacesString += "0";
-			}
-		}
-		return this.decimalPlacesString = decimalPlacesString;
-	}
-	
 	public ObservableList<Data> pieChartData()
 	{
-		decimalPlace();
-		DecimalFormat round = new DecimalFormat(decimalPlacesString);		
+		DecimalPlaces stringRep = new DecimalPlaces();
+		DecimalFormat round = new DecimalFormat(stringRep.stringRepresentationOfDecimals());		
 		for(int i = 0; i < rowDescription.length; i++)
 		{
 			rowDescription[i] += " ("+String.valueOf(round.format(summaryPercentage[i]))+"%)";
