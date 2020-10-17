@@ -32,8 +32,6 @@ public class LanguageAnalysis extends StringToAnalyse
 	private String propertiesForNLP;
 
 	//Below variables are populated via methods in this class.
-	private int countSum;
-	private double percentageSum;
 	private String decimalPlacesString;
 	private int [] summaryCount;
 	private double [] summaryPercentage;
@@ -250,18 +248,6 @@ public class LanguageAnalysis extends StringToAnalyse
 	public double[] getSummaryPercentage()
 	{
 		return summaryPercentage;
-	}
-	
-	//This method returns the total count frequency for the choosen analysis type.
-	public int totalCount()
-	{
-		return countSum = Arrays.stream(summaryCount).sum();
-	}
-	
-	//This method returns the total percentage/relative frequency for the choosen analysis type.
-	public double totalPercentage()
-	{
-		return percentageSum = Arrays.stream(summaryPercentage).sum();
 	}
 	
 	/*

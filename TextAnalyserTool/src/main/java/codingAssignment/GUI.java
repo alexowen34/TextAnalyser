@@ -1,10 +1,9 @@
 //TO DO:
 
-//#1: Sort out issue with importing text from text file - can't sort, add decimals etc.
-//#2: Organise back end to make it more efficent
-//#3  Comment code
-//#4: Sort out tests
-//#5: Practice writing data to a DB
+//#1: Organise back end to make it more efficent
+//#2: Comment code
+//#3: Sort out tests
+//#4: Practice writing data to a DB
 
 package codingAssignment;
 
@@ -192,7 +191,7 @@ public class GUI extends Application
         }
     }
     
-    private void setUpLabels()
+    private void setupLabels()
     {
     	applicationHeader.setLayoutY(9);
     	applicationHeader.setPrefHeight(66); applicationHeader.setPrefWidth(743);
@@ -251,7 +250,7 @@ public class GUI extends Application
         characterPieChartHeader.setText("Summary of Character Types");
     }
     
-    private void setUpCharts()
+    private void setupCharts()
     {
     	characterAnalysisPieChart.setLayoutX(36); characterAnalysisPieChart.setLayoutY(617);
         characterAnalysisPieChart.setPrefHeight(278); characterAnalysisPieChart.setPrefWidth(673);
@@ -264,7 +263,7 @@ public class GUI extends Application
     }
     
     @SuppressWarnings("unchecked")
-	private void setUpTables()
+	private void setupTables()
     {
     	sentimentAnalysisTable.setLayoutX(36); sentimentAnalysisTable.setLayoutY(631);
         sentimentAnalysisTable.setPrefHeight(250); sentimentAnalysisTable.setPrefWidth(673);
@@ -285,7 +284,7 @@ public class GUI extends Application
         partsOfSpeechAnalysisTable.getColumns().addAll(POStag, word);
     }
     
-    private void setUpComboBoxs()
+    private void setupComboBoxs()
     {
         filteringOptionsBox.setLayoutX(318); filteringOptionsBox.setLayoutY(533);
         filteringOptionsBox.setPrefHeight(31); filteringOptionsBox.setPrefWidth(163);
@@ -300,7 +299,7 @@ public class GUI extends Application
         percentageOptionsBox.setOnAction(e -> percentageCalculation(e));
     }
     
-    private void setUpRectangles()
+    private void setupRectangles()
     {
         inputBackgroundBox.setLayoutY(85);
         inputBackgroundBox.setHeight(193); inputBackgroundBox.setWidth(743);
@@ -311,6 +310,18 @@ public class GUI extends Application
         analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
     }
     
+    private void setupOther()
+    {
+        darkModeActivate.setText("Dark Mode");
+        darkModeActivate.setLayoutX(599); darkModeActivate.setLayoutY(27);
+        darkModeActivate.setPrefHeight(20); darkModeActivate.setPrefWidth(110);
+        textForAnalysis.setLayoutX(35); textForAnalysis.setLayoutY(221);
+        textForAnalysis.setPrefHeight(31); textForAnalysis.setPrefWidth(673);
+        textForAnalysis.setPromptText("Enter text");
+        displayText.setLayoutX(36); displayText.setLayoutY(467);
+        displayText.setPrefHeight(47); displayText.setPrefWidth(673);
+    }
+    
 	@Override
     public void start(Stage primaryStage) throws Exception 
     {
@@ -318,24 +329,18 @@ public class GUI extends Application
 		 * The below commented out code links to the FXML file incase it's needed again in the future.
 		 * root = FXMLLoader.load(getClass().getResource("Main.fxml"));
          */
-        root.setPrefHeight(905);
-        root.setPrefWidth(743);
         initialize();
-        darkModeActivate.setText("Dark Mode");
-        darkModeActivate.setLayoutX(614); darkModeActivate.setLayoutY(27);
-        textForAnalysis.setLayoutX(35); textForAnalysis.setLayoutY(221);
-        textForAnalysis.setPrefHeight(31); textForAnalysis.setPrefWidth(673);
-        textForAnalysis.setPromptText("Enter text");
-        displayText.setLayoutX(36); displayText.setLayoutY(467);
-        displayText.setPrefHeight(47); displayText.setPrefWidth(673);
         setupTopButtons();
         setupBottomButtons();
         addIconsToButtons(blackIconsFilePaths);
-        setUpLabels();
-        setUpCharts();
-        setUpTables();
-        setUpComboBoxs();
-        setUpRectangles();
+        setupLabels();
+        setupCharts();
+        setupTables();
+        setupComboBoxs();
+        setupRectangles();
+        setupOther();
+        root.setPrefHeight(905);
+        root.setPrefWidth(743);
         root.getChildren().add(inputBackgroundBox);
         root.getChildren().add(applicationHeader);
         root.getChildren().add(OR);
@@ -383,6 +388,7 @@ public class GUI extends Application
                 {
                 	darkModeActivated = true;
                 	scene.getStylesheets().add(darkModeCSS);
+                	darkModeActivate.setText("White Mode");
                 	inputBackgroundBox.setStyle("-fx-fill: #283149");
                     analysisBackgroundBox.setStyle("-fx-fill: #283149");
                     addIconsToButtons(whiteIconsFilePaths);
@@ -390,6 +396,7 @@ public class GUI extends Application
                 else {
                     darkModeActivated = false;
                     scene.getStylesheets().remove(darkModeCSS);
+                	darkModeActivate.setText("Dark Mode");
                     inputBackgroundBox.setStyle("-fx-fill: #eaeaea");
                     analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
                     addIconsToButtons(blackIconsFilePaths);
@@ -549,7 +556,7 @@ public class GUI extends Application
             sortDescButton.setDisable(sortDescDisable);
             if(decimalPlaceChange == false)
             {
-            	charAnalysis = new CharacterAnalysis(textToBeAnalysed, charactersInScope, percentageCalculation, sortingOption, numberOfDecimalPlaces, "characters", 1);
+            	charAnalysis = new CharacterAnalysis(textToBeAnalysed, charactersInScope, percentageCalculation, sortingOption);
         		charAnalysis.countCharFrequencies();
         		charAnalysis.relativeCharFrequencies();
     			charAnalysis.summary();
@@ -608,7 +615,6 @@ public class GUI extends Application
 			wordAnalysis.averageWordLength();
 			wordAnalysis.mostFrequentWord();
 			wordAnalysis.sentencesListAndCount();
-			wordAnalysis.getAverageSentencesPerPara();
     		metric.setCellValueFactory(new PropertyValueFactory<WordAnalysis, String>("metric"));
             value.setCellValueFactory(new PropertyValueFactory<WordAnalysis, String>("value"));
             wordAnalysisTable.setItems(wordAnalysis.wordAnalysisTableData());

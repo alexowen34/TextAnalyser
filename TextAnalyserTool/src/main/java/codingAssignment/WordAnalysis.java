@@ -8,8 +8,6 @@ import java.util.List;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreSentence;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +29,6 @@ public class WordAnalysis extends StringToAnalyse
 	private int wordCount;
 	private int sentenceCount;
 	private double averageWordLength;
-	private double averageNoSentencesPerPara;
 	private String mostFrequentWord;
 	private ArrayList<String> wordArray = new ArrayList<String>();
 	private SimpleStringProperty metric;
@@ -213,21 +210,6 @@ public class WordAnalysis extends StringToAnalyse
 	public int getSentenceCount()
 	{
 		return sentenceCount;
-	}
-	
-	//This method finds the average number of sentences per paragprah.
-	public double getAverageSentencesPerPara()
-	{
-		double average;
-		if(wordCount <= 0)
-		{
-			average = 0.00;
-			paragraphCount = 0;
-		}
-		else {
-			average = sentenceCount/paragraphCount;
-		}
-		return averageNoSentencesPerPara = average;
 	}
 	
 	//This method returns the sentence count. Method is used in this project only for testing purposes.

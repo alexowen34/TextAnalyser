@@ -4,18 +4,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 
 /*
@@ -29,15 +26,10 @@ public class CharacterAnalysis extends StringToAnalyse
 	//Below variables are populated via the constructor method.
 	private int percentageCalcType;
 	private int sortingOptionType;
-	private int decimalPlaces;
-	private int filterType;
-	private String filteredCharacterType;
 	private String referenceOption;
 	private char[] referenceCharactersForTable;
 
 	//Below variables are populated via methods in this class.
-	private int countSum;
-	private double percentageSum;
 	private String decimalPlacesString;
 	private int[] countFrequencyOutput;
 	private int [] summaryCount;
@@ -47,8 +39,7 @@ public class CharacterAnalysis extends StringToAnalyse
 
 	
 	//Constructor method that is used by TUI to pass in required data to this object.
-	public CharacterAnalysis (String inputString, String referenceOption, int percentageCalcType, int sortingOptionType, int decimalPlaces, 
-			                  String filteredCharacterType, int filterType)
+	public CharacterAnalysis (String inputString, String referenceOption, int percentageCalcType, int sortingOptionType)
 	{
 		super(inputString);
 		this.referenceOption = referenceOption;
@@ -56,9 +47,6 @@ public class CharacterAnalysis extends StringToAnalyse
 		referenceCharactersForTable = character;
 		this.percentageCalcType = percentageCalcType;
 		this.sortingOptionType = sortingOptionType;
-		this.decimalPlaces = decimalPlaces;
-		this.filteredCharacterType = filteredCharacterType;
-		this.filterType = filterType;
 	}
 	
 	//Constructor method that is shortened for 'relativeCharFrequencies' and 'summary' method that is created and called from within this class.
@@ -199,18 +187,6 @@ public class CharacterAnalysis extends StringToAnalyse
 	public double[] getPercentageSummaryOutput()
 	{
 		return summaryPercentage;
-	}
-
-	//This method returns the total character count frequency.
-	public int totalCount()
-	{
-		return countSum = Arrays.stream(countFrequencyOutput).sum();
-	}
-	
-	//This method returns the total character percentage/relative frequency.
-	public double totalPercentage()
-	{
-		return percentageSum = Arrays.stream(percentageFrequencyOutput).sum();
 	}
 	
 	public XYChart.Series<String, Number> barChartData()
