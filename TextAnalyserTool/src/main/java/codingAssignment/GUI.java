@@ -1,13 +1,10 @@
 //TO DO:
 
-//testtest
 //#1: Sort out issue with importing text from text file - can't sort, add decimals etc.
 //#2: Organise back end to make it more efficent
 //#3  Comment code
-//#4: Add scroll bar
-//#5: Media queries in CSS
-//#6: Sort out tests
-//#7: Practice writing data to a DB
+//#4: Sort out tests
+//#5: Practice writing data to a DB
 
 package codingAssignment;
 
@@ -17,8 +14,6 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -67,44 +62,75 @@ public class GUI extends Application
 	public static int numberOfDecimalPlaces = 0;
 	private XYChart.Series<String, Number> characterAnalysisBarChartData;
 	private static TextField textForAnalysis = new TextField();
-	private static Label importFileSuccessMessage = new Label(), displayTextHeader = new Label(), characterBarChartHeader = new Label(), sentimentResultsHeader = new Label(), wordAnalysisResultsHeader = new Label(), partsOfSpeechAnalysisResultsHeader = new Label(), characterPieChartHeader = new Label();
+	private static Label applicationHeader = new Label(), OR = new Label(), displayInputMethodHeader = new Label(), displayAnalysisTypeHeader = new Label(), importFileSuccessMessage = new Label(), displayTextHeader = new Label(), characterBarChartHeader = new Label(), sentimentResultsHeader = new Label(), wordAnalysisResultsHeader = new Label(), partsOfSpeechAnalysisResultsHeader = new Label(), characterPieChartHeader = new Label();
 	private static TextArea displayText = new TextArea();
 	private static PieChart characterAnalysisPieChart = new PieChart(), sentimentAnalysisPieChart = new PieChart();
-	private static Rectangle analysisBackgroundBox = new Rectangle();
-	private static Button sortAscButton = new Button(), sortDescButton = new Button(), removeDecimal = new Button(), addDecimal = new Button(), displaySentimentTable = new Button(), displaySentimentPieChart = new Button(), popOutBarChart = new Button(), displayCharacterPieChart = new Button(), displayCharacterBarChart = new Button();
-	private static Button[] arrayOfButtons = {sortAscButton, sortDescButton, removeDecimal, addDecimal, displaySentimentTable, displaySentimentPieChart, popOutBarChart, displayCharacterPieChart, displayCharacterBarChart};
+	private static Rectangle analysisBackgroundBox = new Rectangle(), inputBackgroundBox = new Rectangle();
+	private static Button displayCharacterAnalysis = new Button(), displayWordAnalysis = new Button(), displaySentimentAnalysis = new Button(), displayPartsOfSpeechAnalysis = new Button(), getFilePath = new Button(), sortAscButton = new Button(), sortDescButton = new Button(), removeDecimal = new Button(), addDecimal = new Button(), displaySentimentTable = new Button(), displaySentimentPieChart = new Button(), popOutBarChart = new Button(), displayCharacterPieChart = new Button(), displayCharacterBarChart = new Button();
+	private static Button[] arrayOfBottomButtons = {sortAscButton, sortDescButton, removeDecimal, addDecimal, displaySentimentTable, displaySentimentPieChart, popOutBarChart, displayCharacterPieChart, displayCharacterBarChart};
 	private static String[] blackIconsFilePaths = {"file:Assets/Icons/Black/BLACK_SortASCIcon.png", "file:Assets/Icons/Black/BLACK_SortDESCIcon.png", "", "", "file:Assets/Icons/Black/BLACK_TableIcon.png", "file:Assets/Icons/Black/BLACK_PieChartIcon.png", "file:Assets/Icons/Black/BLACK_MagnifyingGlassIcon.png", "file:Assets/Icons/Black/BLACK_PieChartIcon.png", "file:Assets/Icons/Black/BLACK_BarChartIcon.png"};
 	private static String[] whiteIconsFilePaths = {"file:Assets/Icons/White/WHITE_SortASCIcon.png", "file:Assets/Icons/White/WHITE_SortDESCIcon.png", "", "", "file:Assets/Icons/White/WHITE_TableIcon.png", "file:Assets/Icons/White/WHITE_PieChartIcon.png", "file:Assets/Icons/White/WHITE_MagnifyingGlassIcon.png", "file:Assets/Icons/White/WHITE_PieChartIcon.png", "file:Assets/Icons/White/WHITE_BarChartIcon.png"};
 	private static ComboBox<String> filteringOptionsBox = new ComboBox<String>(), percentageOptionsBox = new ComboBox<String>();
 	private static TableView<LanguageAnalysis> sentimentAnalysisTable = new TableView<LanguageAnalysis>();
-	private static TableColumn<LanguageAnalysis, String> sentiment = new TableColumn<LanguageAnalysis, String>();
-	private static TableColumn<LanguageAnalysis, String> sentence = new TableColumn<LanguageAnalysis, String>();
+	private static TableColumn<LanguageAnalysis, String> sentiment = new TableColumn<LanguageAnalysis, String>(), sentence = new TableColumn<LanguageAnalysis, String>();
 	private static TableView<WordAnalysis> wordAnalysisTable = new TableView<WordAnalysis>();
-	private static TableColumn<WordAnalysis, String> metric = new TableColumn<WordAnalysis, String>();
-	private static TableColumn<WordAnalysis, String> value = new TableColumn<WordAnalysis, String>();
+	private static TableColumn<WordAnalysis, String> metric = new TableColumn<WordAnalysis, String>(), value = new TableColumn<WordAnalysis, String>();
     private static CategoryAxis xAxis = new CategoryAxis();
     private static NumberAxis yAxis = new NumberAxis();
 	private static BarChart<String, Number> characterAnalysisBarChart = new BarChart<>(xAxis, yAxis);
 	private static TableView<LanguageAnalysis> partsOfSpeechAnalysisTable = new TableView<LanguageAnalysis>();
-	private static TableColumn<LanguageAnalysis, String> word = new TableColumn<LanguageAnalysis, String>();
-	private static TableColumn<LanguageAnalysis, String> POStag = new TableColumn<LanguageAnalysis, String>();
+	private static TableColumn<LanguageAnalysis, String> word = new TableColumn<LanguageAnalysis, String>(), POStag = new TableColumn<LanguageAnalysis, String>();
 	private ToggleButton darkModeActivate = new ToggleButton();
     private String darkModeCSS = getClass().getResource("DarkMode.css").toExternalForm();
     private static boolean darkModeActivated;
     private AnchorPane root = new AnchorPane();
-	
+    
     public static void main(String[] args)
     {
         launch();
     }
     
-    private void setupButtons()
+    private void setupTopButtons()
+    {
+    	displayCharacterAnalysis.setLayoutX(36);
+    	displayCharacterAnalysis.setLayoutY(341);
+    	displayCharacterAnalysis.setText("Character Analysis");
+    	displayCharacterAnalysis.setOnAction(e -> displayCharacterAnalysis(e));
+    	
+    	displayWordAnalysis.setLayoutX(194);
+    	displayWordAnalysis.setLayoutY(341);
+    	displayWordAnalysis.setText("Word Analysis");
+    	displayWordAnalysis.setOnAction(e -> displayWordAnalysis(e));
+    	
+    	displaySentimentAnalysis.setLayoutX(329);
+    	displaySentimentAnalysis.setLayoutY(341);
+    	displaySentimentAnalysis.setText("Sentiment Analysis");
+    	displaySentimentAnalysis.setOnAction(e -> displaySentimentAnalysis(e));
+    	
+    	displayPartsOfSpeechAnalysis.setLayoutX(491);
+    	displayPartsOfSpeechAnalysis.setLayoutY(341);
+    	displayPartsOfSpeechAnalysis.setText("Parts of Speech Analysis");
+    	displayPartsOfSpeechAnalysis.setOnAction(e -> displayPartsOfSpeechAnalysis(e));
+    	
+    	getFilePath.setLayoutX(35);
+    	getFilePath.setLayoutY(143);
+    	getFilePath.setText("Select Text File");
+    	getFilePath.setOnAction(e -> {
+			try {
+				getFilePath(e);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		});
+    }
+    
+    private void setupBottomButtons()
     {
     	int prefHeight = 32, prefWidth = 54;
-    	for(int i = 0; i < arrayOfButtons.length; i++)
+    	for(int i = 0; i < arrayOfBottomButtons.length; i++)
     	{
-    		arrayOfButtons[i].setPrefHeight(prefHeight);
-    		arrayOfButtons[i].setPrefWidth(prefWidth);
+    		arrayOfBottomButtons[i].setPrefHeight(prefHeight);
+    		arrayOfBottomButtons[i].setPrefWidth(prefWidth);
     	}
     	
         sortAscButton.setLayoutX(247);
@@ -161,13 +187,31 @@ public class GUI extends Application
                 {
                 	view[i].setFitHeight(22); view[i].setFitWidth(24);
                 }
-            	arrayOfButtons[i].setGraphic(view[i]);
+            	arrayOfBottomButtons[i].setGraphic(view[i]);
         	}
         }
     }
     
     private void setUpLabels()
     {
+    	applicationHeader.setLayoutY(9);
+    	applicationHeader.setPrefHeight(66); applicationHeader.setPrefWidth(743);
+    	applicationHeader.setStyle("-fx-font-size: 30px");
+    	applicationHeader.setAlignment(Pos.CENTER);
+    	applicationHeader.setText("Text Analyser");
+    	
+    	OR.setLayoutX(36); OR.setLayoutY(187);
+    	OR.setStyle("-fx-font-size: 16px");
+    	OR.setText("OR");
+
+    	displayInputMethodHeader.setLayoutX(36); displayInputMethodHeader.setLayoutY(100);
+    	displayInputMethodHeader.setStyle("-fx-font-size: 18px");
+    	displayInputMethodHeader.setText("Please select your text import method:");
+
+    	displayAnalysisTypeHeader.setLayoutX(36); displayAnalysisTypeHeader.setLayoutY(297);
+    	displayAnalysisTypeHeader.setStyle("-fx-font-size: 18px");
+    	displayAnalysisTypeHeader.setText("Please select the type of analysis you would like to perform:");
+
         importFileSuccessMessage.setLayoutX(167); importFileSuccessMessage.setLayoutY(148);
         importFileSuccessMessage.setStyle("-fx-text-fill: #12a454");
         importFileSuccessMessage.setText("Your text has been imported successfully!");
@@ -256,10 +300,27 @@ public class GUI extends Application
         percentageOptionsBox.setOnAction(e -> percentageCalculation(e));
     }
     
+    private void setUpRectangles()
+    {
+        inputBackgroundBox.setLayoutY(85);
+        inputBackgroundBox.setHeight(193); inputBackgroundBox.setWidth(743);
+        inputBackgroundBox.setStyle("-fx-fill: #eaeaea");
+        
+        analysisBackgroundBox.setLayoutY(401);
+        analysisBackgroundBox.setHeight(504); analysisBackgroundBox.setWidth(743);
+        analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
+    }
+    
 	@Override
     public void start(Stage primaryStage) throws Exception 
     {
-        root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+		/*
+		 * The below commented out code links to the FXML file incase it's needed again in the future.
+		 * root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+         */
+        root.setPrefHeight(905);
+        root.setPrefWidth(743);
+        initialize();
         darkModeActivate.setText("Dark Mode");
         darkModeActivate.setLayoutX(614); darkModeActivate.setLayoutY(27);
         textForAnalysis.setLayoutX(35); textForAnalysis.setLayoutY(221);
@@ -267,15 +328,24 @@ public class GUI extends Application
         textForAnalysis.setPromptText("Enter text");
         displayText.setLayoutX(36); displayText.setLayoutY(467);
         displayText.setPrefHeight(47); displayText.setPrefWidth(673);
-        analysisBackgroundBox.setLayoutX(0); analysisBackgroundBox.setLayoutY(401);
-        analysisBackgroundBox.setHeight(500); analysisBackgroundBox.setWidth(743);
-        analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
-        setupButtons();
+        setupTopButtons();
+        setupBottomButtons();
         addIconsToButtons(blackIconsFilePaths);
         setUpLabels();
         setUpCharts();
         setUpTables();
         setUpComboBoxs();
+        setUpRectangles();
+        root.getChildren().add(inputBackgroundBox);
+        root.getChildren().add(applicationHeader);
+        root.getChildren().add(OR);
+        root.getChildren().add(displayInputMethodHeader);
+        root.getChildren().add(displayAnalysisTypeHeader);
+        root.getChildren().add(displayCharacterAnalysis);
+        root.getChildren().add(displayWordAnalysis);
+        root.getChildren().add(displaySentimentAnalysis);
+        root.getChildren().add(displayPartsOfSpeechAnalysis);
+        root.getChildren().add(getFilePath);
         root.getChildren().add(analysisBackgroundBox);
         root.getChildren().add(darkModeActivate);
         root.getChildren().add(textForAnalysis);
@@ -313,12 +383,14 @@ public class GUI extends Application
                 {
                 	darkModeActivated = true;
                 	scene.getStylesheets().add(darkModeCSS);
+                	inputBackgroundBox.setStyle("-fx-fill: #283149");
                     analysisBackgroundBox.setStyle("-fx-fill: #283149");
                     addIconsToButtons(whiteIconsFilePaths);
                 }
                 else {
                     darkModeActivated = false;
                     scene.getStylesheets().remove(darkModeCSS);
+                    inputBackgroundBox.setStyle("-fx-fill: #eaeaea");
                     analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
                     addIconsToButtons(blackIconsFilePaths);
                 }
@@ -326,10 +398,13 @@ public class GUI extends Application
         });
         primaryStage.setTitle("Text Analyser");
         primaryStage.setScene(scene);
+        primaryStage.setMaxHeight(905+48);
+        primaryStage.setMaxWidth(743+18);
+        primaryStage.setMinHeight(905+48);
+        primaryStage.setMinWidth(743+18);
         primaryStage.show();
     }
     
-    @FXML
     private void initialize() 
     {
     	importFileSuccessMessage.setVisible(false);

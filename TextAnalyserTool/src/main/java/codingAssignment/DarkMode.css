@@ -5,11 +5,6 @@
 	-fx-background-color: #232931;
 }
 
-#inputBackgroundBox {
-	-fx-fill: #283149;
-	-fx-stroke: #283149;
-}
-
 .text-field {
 	-fx-background-color: #232931;
 	-fx-text-inner-color: white;
