@@ -19,7 +19,7 @@ import javafx.scene.layout.StackPane;
  * This class does the character analysis. The class extends the abstract super class of StringToAnalyse which contains the text the user has inputted
  * to be analysed.
  */
-public class CharacterAnalysis extends StringToAnalyse
+public class CharacterAnalysis extends TextToBeAnalysed
 {
 	//Below is a range of global private variables that can be accessed across all methods in this class.
 
@@ -38,9 +38,8 @@ public class CharacterAnalysis extends StringToAnalyse
 
 	
 	//Constructor method that is used by TUI to pass in required data to this object.
-	public CharacterAnalysis (String inputString, String referenceOption, int percentageCalcType, int sortingOptionType)
+	public CharacterAnalysis (String referenceOption, int percentageCalcType, int sortingOptionType)
 	{
-		super(inputString);
 		this.referenceOption = referenceOption;
 		char [] character = referenceOption.toCharArray();
 		referenceCharactersForTable = character;
@@ -49,9 +48,8 @@ public class CharacterAnalysis extends StringToAnalyse
 	}
 	
 	//Constructor method that is shortened for 'relativeCharFrequencies' and 'summary' method that is created and called from within this class.
-	public CharacterAnalysis (String inputString, String referenceOption)
+	public CharacterAnalysis (String referenceOption)
 	{
-		super(inputString);
 		char [] character = referenceOption.toCharArray();
 		referenceCharactersForTable = character;
 	}
@@ -85,7 +83,7 @@ public class CharacterAnalysis extends StringToAnalyse
 		int [] output = new int[referenceCharactersForTable.length];
 		for(int i = 0; i < output.length; i++)
 		{
-			output[i]=timesCharOccurs(super.getInputFromUser(),referenceCharactersForTable[i]);
+			output[i]=timesCharOccurs(textToBeAnalysed,referenceCharactersForTable[i]);
 		}
 		if(sortingOptionType == 2 || sortingOptionType == 3)
 		{
@@ -120,7 +118,7 @@ public class CharacterAnalysis extends StringToAnalyse
 	 */
 	public double[] relativeCharFrequencies()
 	{	
-		CharacterAnalysis percentage = new CharacterAnalysis(super.getInputFromUser(), GUI.fullListOfReferenceCharacters);
+		CharacterAnalysis percentage = new CharacterAnalysis(GUI.fullListOfReferenceCharacters);
 		int sumOfFullString = Arrays.stream(percentage.countCharFrequencies()).sum();
 		int arraySum = 0;
 		switch(percentageCalcType)
@@ -159,7 +157,7 @@ public class CharacterAnalysis extends StringToAnalyse
 		CharacterAnalysis[] summary = new CharacterAnalysis[3];
 		for(int i = 0; i < summary.length; i++)
 		{
-			summary[i] = new CharacterAnalysis(super.getInputFromUser(), filterCharacters[i]);
+			summary[i] = new CharacterAnalysis(filterCharacters[i]);
 			for(int j = 0; j < summary[i].countCharFrequencies().length; j++)
 			{
 				countSummaryOutput[i] += summary[i].countCharFrequencies()[j];
@@ -256,6 +254,7 @@ public class CharacterAnalysis extends StringToAnalyse
 		return list;
 	}
 }
+
 
 
 	

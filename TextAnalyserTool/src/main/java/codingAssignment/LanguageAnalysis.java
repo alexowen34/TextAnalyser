@@ -22,7 +22,7 @@ import javafx.scene.chart.PieChart.Data;
  * This class does the more advanced language analysis. The class extends the abstract super class of StringToAnalyse which contains the text the 
  * user has inputted to be analysed.
  */
-public class LanguageAnalysis extends StringToAnalyse
+public class LanguageAnalysis extends TextToBeAnalysed
 {
 	//Below is a range of global private variables that can be accessed across all methods in this class.
 
@@ -46,10 +46,9 @@ public class LanguageAnalysis extends StringToAnalyse
 	private SimpleStringProperty word;
 	
 	//Constructor method that is used by TUI to pass in required data to this object.
-	public LanguageAnalysis(String userInput, String propertiesForNLP, int analysisOption, 
+	public LanguageAnalysis(String propertiesForNLP, int analysisOption, 
 							int sortingOptionType) 
 	{
-		super(userInput);
 		this.propertiesForNLP = propertiesForNLP;
 		this.analysisOption = analysisOption;
 		this.sortingOptionType = sortingOptionType;
@@ -58,14 +57,12 @@ public class LanguageAnalysis extends StringToAnalyse
 	//Contructor method that is used soley for GUI table creation.
 	public LanguageAnalysis(String sentences, String sentiments)
 	{
-		super("");
 		this.sentences = new SimpleStringProperty(sentences);
 		this.sentiments = new SimpleStringProperty(sentiments);		
 	}
 	
 	public LanguageAnalysis(String POStag, String word, String NA)
 	{
-		super("");
 		this.POStag = new SimpleStringProperty(POStag);
 		this.word = new SimpleStringProperty(word);
 	}
@@ -97,7 +94,7 @@ public class LanguageAnalysis extends StringToAnalyse
 	 */
 	public void sentimentAnalysis()
 	{
-		WordAnalysis sentences = new WordAnalysis(super.getInputFromUser(), propertiesForNLP, "");
+		WordAnalysis sentences = new WordAnalysis(propertiesForNLP);
 		List<CoreSentence> listOfSentences = sentences.sentencesListAndCount();
 		HashMap<String, String> sentenceAndSentiment = new HashMap<String,String>();
 		for(CoreSentence sentence : listOfSentences)
@@ -147,7 +144,7 @@ public class LanguageAnalysis extends StringToAnalyse
 		POStagsAndDescriptions = POStagsFromTxtFile.fileToHashMap();
 		NLPpipeline pipeline = new NLPpipeline(propertiesForNLP);
 		StanfordCoreNLP grammar = pipeline.getPipeline();
-		CoreDocument coreDocument = new CoreDocument(super.getInputFromUser());
+		CoreDocument coreDocument = new CoreDocument(textToBeAnalysed);
 		grammar.annotate(coreDocument);
 		List<CoreLabel> words = coreDocument.tokens();
 		HashMap<String, String> wordsAndPOS = new HashMap<String, String>();

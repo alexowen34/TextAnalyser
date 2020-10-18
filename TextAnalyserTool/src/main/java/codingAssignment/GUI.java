@@ -2,10 +2,9 @@
 
 //#1: Sort out tests
 //#2: Add new comments and update exisiting comments following move to GUI from TUI
-//#3: look at move from super class to interface.
 // ONCE THE ABOVE STEPS HAVE BEEN COMPLETE, APP WOULD BE SUITABLE FOR PUBLIC.
-//#4: Practice writing data to a DB.
-//#5: Add option to export to Excel.
+//#3: Practice writing data to a DB.
+//#4: Add option to export to Excel.
 
 package codingAssignment;
 
@@ -48,7 +47,7 @@ public class GUI extends Application
 	protected static String numbers = "1234567890";
 	protected static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
 	protected static String charactersInScope = fullListOfReferenceCharacters;
-	private String textToBeAnalysed = "";
+	protected static String textToBeAnalysed = "";
 	private static LanguageAnalysis langAnalysis;
 	private static CharacterAnalysis charAnalysis;
 	private boolean decimalPlaceChange;
@@ -558,7 +557,7 @@ public class GUI extends Application
             sortDescButton.setDisable(sortDescDisable);
             if(decimalPlaceChange == false)
             {
-            	charAnalysis = new CharacterAnalysis(textToBeAnalysed, charactersInScope, percentageCalculation, sortingOption);
+            	charAnalysis = new CharacterAnalysis(charactersInScope, percentageCalculation, sortingOption);
         		charAnalysis.countCharFrequencies();
         		charAnalysis.relativeCharFrequencies();
     			charAnalysis.summary();
@@ -612,7 +611,7 @@ public class GUI extends Application
             sortAscButton.setDisable(true);
             filteringOptionsBox.setDisable(true);
             percentageOptionsBox.setDisable(true);
-    		WordAnalysis wordAnalysis = new WordAnalysis(textToBeAnalysed, "tokenize, ssplit", paragraphCount);
+    		WordAnalysis wordAnalysis = new WordAnalysis("tokenize, ssplit", paragraphCount);
 			wordAnalysis.wordCount();
 			wordAnalysis.averageWordLength();
 			wordAnalysis.mostFrequentWord();
@@ -656,7 +655,7 @@ public class GUI extends Application
             percentageOptionsBox.setDisable(true);
         	if(decimalPlaceChange == false)
         	{
-            	langAnalysis = new LanguageAnalysis(textToBeAnalysed, "tokenize, ssplit, pos, parse, sentiment", 1, 0);
+            	langAnalysis = new LanguageAnalysis("tokenize, ssplit, pos, parse, sentiment", 1, 0);
             	langAnalysis.sentimentAnalysis();
         	}
         	ObservableList<PieChart.Data> pieChartData = langAnalysis.pieChartData();
@@ -712,7 +711,7 @@ public class GUI extends Application
             displaySortDecimalFilterPercentageRibbon(true);
         	if(decimalPlaceChange == false)
         	{
-            	langAnalysis = new LanguageAnalysis(textToBeAnalysed, "tokenize, ssplit, pos, parse, sentiment", 2, sortingOption);
+            	langAnalysis = new LanguageAnalysis("tokenize, ssplit, pos, parse, sentiment", 2, sortingOption);
             	try {
                 	langAnalysis.partsOfSpeechAnalsis();
             	}

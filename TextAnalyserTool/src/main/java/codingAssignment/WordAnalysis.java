@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
  * to be analysed.
  */
 
-public class WordAnalysis extends StringToAnalyse
+public class WordAnalysis extends TextToBeAnalysed
 {
 	//Below is a range of global private variables that can be accessed across all methods across this class.
 
@@ -35,24 +35,21 @@ public class WordAnalysis extends StringToAnalyse
 	private SimpleStringProperty value;
 	
 	//Contructor method that is used by the TUI to pass in requried data to this object.
-	public WordAnalysis(String userInput, String propertiesForNLP, int paragraphCount)
+	public WordAnalysis(String propertiesForNLP, int paragraphCount)
 	{
-		super(userInput);
 		this.propertiesForNLP = propertiesForNLP;
 		this.paragraphCount = paragraphCount;
 	}
 	
 	//Constructor method that is used by sentimentAnalysis method in LanguageAnalysis object to pass in required data to this object.
-	public WordAnalysis(String userInput, String propertiesForNLP, String notApplicable)
+	public WordAnalysis(String propertiesForNLP)
 	{
-		super(userInput);
 		this.propertiesForNLP = propertiesForNLP;
 	}
 	
 	//Contructor method that is used soley for GUI table creation.
 	public WordAnalysis(String metric, String value)
 	{
-		super("");
 		this.metric = new SimpleStringProperty(metric);
 		this.value = new SimpleStringProperty(value);		
 	}
@@ -74,7 +71,7 @@ public class WordAnalysis extends StringToAnalyse
 	*/
 	public int wordCount()
 	{
-		String[] arrayForValidWords = super.getInputFromUser().trim().split("\\s+");
+		String[] arrayForValidWords = textToBeAnalysed.trim().split("\\s+");
 		String charactersToRemove = GUI.specialCharacters += GUI.numbers;
 		char[] charsToRemove = charactersToRemove.toCharArray();
 		String[] charsToRemoveString = new String[charsToRemove.length];
@@ -192,7 +189,7 @@ public class WordAnalysis extends StringToAnalyse
 	{
 		NLPpipeline pipeline = new NLPpipeline(propertiesForNLP);
 		StanfordCoreNLP sentenceAnalysis = pipeline.getPipeline();
-		CoreDocument coreDocument = new CoreDocument(super.getInputFromUser());
+		CoreDocument coreDocument = new CoreDocument(textToBeAnalysed);
 		sentenceAnalysis.annotate(coreDocument);
 		List<CoreSentence> sentenceList = coreDocument.sentences();
 		if(wordCount <= 0)
