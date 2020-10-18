@@ -1,10 +1,11 @@
 //TO DO:
 
-//#1: Organise back end to make it more efficent
-//#2: Sort out tests
-//#3: Comment code
-//#4: Practice writing data to a DB
-//#5: look at move from super class to interface
+//#1: Sort out tests
+//#2: Add new comments and update exisiting comments following move to GUI from TUI
+//#3: look at move from super class to interface.
+// ONCE THE ABOVE STEPS HAVE BEEN COMPLETE, APP WOULD BE SUITABLE FOR PUBLIC.
+//#4: Practice writing data to a DB.
+//#5: Add option to export to Excel.
 
 package codingAssignment;
 
@@ -159,7 +160,7 @@ public class GUI extends Application
         displaySentimentPieChart.setLayoutY(586); 
         displaySentimentPieChart.setOnAction(e -> displaySentimentPieChart(e));
         
-        popOutBarChart.setLayoutX(65); 
+        popOutBarChart.setLayoutX(37);
         popOutBarChart.setLayoutY(586); 
         popOutBarChart.setOnAction(e -> popOutBarChart(e));
         
@@ -806,10 +807,15 @@ public class GUI extends Application
         		{
             		characterAnalysisPieChart.setAnimated(false);
         			charAnalysisPieChartVisible = true;
-        			percentageOptionsBoxDisable = true;
         			filteringOptionsBoxDisable = true;
         			sortAscDisable = true;
         			sortDescDisable = true;
+        		}
+        		else {
+        			charAnalysisPieChartVisible = false;
+        			filteringOptionsBoxDisable = false;
+        			sortAscDisable = false;
+        			sortDescDisable = false;
         		}
             	displayCharacterAnalysis(event);
         	}
@@ -834,10 +840,15 @@ public class GUI extends Application
         		{
             		characterAnalysisPieChart.setAnimated(false);
         			charAnalysisPieChartVisible = true;
-        			percentageOptionsBoxDisable = true;
         			filteringOptionsBoxDisable = true;
         			sortAscDisable = true;
         			sortDescDisable = true;
+        		}
+        		else {
+        			charAnalysisPieChartVisible = false;
+        			filteringOptionsBoxDisable = false;
+        			sortAscDisable = false;
+        			sortDescDisable = false;
         		}
             	displayCharacterAnalysis(event);
         	}

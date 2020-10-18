@@ -220,8 +220,6 @@ public class CharacterAnalysis extends StringToAnalyse
         StackPane.setMargin(group, new Insets(0, 0, 5, 0));
         node.getChildren().add(group);
         data.setNode(node);
-		//Tooltip tooltip = new Tooltip(String.valueOf("Hello"));
-		//Tooltip.install(data.getNode(), tooltip);
         return data;
     }
     
