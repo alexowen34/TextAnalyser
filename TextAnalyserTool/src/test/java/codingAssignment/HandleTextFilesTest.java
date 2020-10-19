@@ -40,19 +40,19 @@ public class HandleTextFilesTest
 		return Arrays.asList(new Object[][] {
 			
 			//Test case #0
-			{1,"Data/HandleTextFilesTestFiles/HandleTextFiles-TestCase0.txt", "Hello World", 1},
+			{1,"TestData/HandleTextFilesTestFiles/HandleTextFiles-TestCase0.txt", "Hello World", 1},
 			
 			//Test case #1
-			{1,"Data/HandleTextFilesTestFiles/HandleTextFiles-TestCase1.txt", "Hello World. My name is Alex Owen. Whats your name?", 3},
+			{1,"TestData/HandleTextFilesTestFiles/HandleTextFiles-TestCase1.txt", "Hello World. My name is Alex Owen. Whats your name?", 3},
 			
 			//Test case #2
-			{1,"Data/HandleTextFilesTestFiles/HandleTextFiles-TestCase2.txt", "Hi there, How are you today. I am good thanks. How are you? I am well thankyou. Kind regards.", 6},
+			{1,"TestData/HandleTextFilesTestFiles/HandleTextFiles-TestCase2.txt", "Hi there, How are you today. I am good thanks. How are you? I am well thankyou. Kind regards.", 6},
 			
 			//Test case #3
-			{1,"Data/HandleTextFilesTestFiles/HandleTextFiles-TestCase3.txt", "Hello World. My name is Alex Owen. Whats your name?", 3},
+			{1,"TestData/HandleTextFilesTestFiles/HandleTextFiles-TestCase3.txt", "Hello World. My name is Alex Owen. Whats your name?", 3},
 		
 			//Test case #4
-			{2,"Data/POStags.txt", "{JJ=Adjective, "
+			{2,"AppInputData/POStags.txt", "{JJ=Adjective, "
 					+ "NN=Noun, "
 					+ "singular or mass, "
 					+ "WRB=Wh-adverb, "

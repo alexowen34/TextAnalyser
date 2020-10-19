@@ -6,14 +6,21 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.SwingUtilities;
+
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import javafx.embed.swing.JFXPanel;
+
 @RunWith(value = Parameterized.class)
-public class WordAnalysisTest
+public class WordAnalysisTest extends TextToBeAnalysed
 {
 	//Stores the required data, for the @Test method, that is populated by the constructor method.
 	private int testSelector;
@@ -26,11 +33,24 @@ public class WordAnalysisTest
 	private String expectedResult3;
 	private int expectedResult4;
 	private int expectedResult5;
-	private String expectedResult6;
+	
+    @BeforeClass
+    public static void initToolkit() throws InterruptedException
+    {
+        final CountDownLatch latch = new CountDownLatch(1);
+        SwingUtilities.invokeLater(() -> {
+            new JFXPanel(); // initializes JavaFX environment
+            latch.countDown();
+        });
+        if(!latch.await(5L, TimeUnit.SECONDS))
+        {
+        	throw new ExceptionInInitializerError();
+        }
+    }
 	
 	//Constructor method that takes the required data and passes it to the global variables.
 	public WordAnalysisTest(int testSelector, String fileLocation, String userInput, String propertiesForNLP, int paragraphCounter, int expectedResult1, 
-			String expectedResult2, String expectedResult3, int expectedResult4, int expectedResult5, String expectedResult6)
+			String expectedResult2, String expectedResult3, int expectedResult4, int expectedResult5)
 	{
 		this.testSelector = testSelector;
 		this.fileLocation = fileLocation;
@@ -42,7 +62,6 @@ public class WordAnalysisTest
 		this.expectedResult3 = expectedResult3;
 		this.expectedResult4 = expectedResult4;
 		this.expectedResult5 = expectedResult5;
-		this.expectedResult6 = expectedResult6;
 	}
 	
 	/*
@@ -57,55 +76,55 @@ public class WordAnalysisTest
 			
 			//Test case #0
 			{1, "", "Hello World", "tokenize, ssplit", 1, 2, "5.00", "Text does not contain a distinct most frequent word",
-			 1, 1, "1.00"},
+			 1, 1},
 			
 			//Test case #1
 			{1, "", "Hello World!       Hello World.                Hello World?", "tokenize, ssplit", 1, 6, "5.00", 
-			 "Text does not contain a distinct most frequent word", 1, 3, "3.00"},
+			 "Text does not contain a distinct most frequent word", 1, 3},
 
 			//Test case #2
 			{1, "", "From the Wright brothers' first flight at Kitty Hawk in 1903 to the vertical take-off 'air taxis' showcased at this year's CES, the story of aviation is a story of invention.",
-			 "tokenize, ssplit", 1, 30, "4.43", "the", 1, 1, "1.00"},
+			 "tokenize, ssplit", 1, 30, "4.43", "the", 1, 1},
 
 			//Test case #3
 			{1, "", "Hello World. World hello. Hello. World hello.", "tokenize, ssplit", 1, 7, "5.00", 
-			 "hello", 1, 4, "4.00"},
+			 "hello", 1, 4},
 			
 			//Test case #4
 			{1, "", "Hello World. World hello. World hello.", "tokenize, ssplit", 1, 6, "5.00", 
-			 "Text does not contain a distinct most frequent word", 1, 3, "3.00"},
+			 "Text does not contain a distinct most frequent word", 1, 3},
 			
 			//Test case #5
 			{1, "", "Alex alex Alex Alex alex.", "tokenize, ssplit", 1, 5, "4.00", 
-			 "alex", 1, 1, "1.00"},
+			 "alex", 1, 1},
 			
 			//Test case #6
 			{1, "", "Dear Mr. Owen, how are you today? You are 21.5 years old!", "tokenize, ssplit", 1, 11, "3.45",
-			 "Text does not contain a distinct most frequent word", 1, 2, "2.00"},
+			 "Text does not contain a distinct most frequent word", 1, 2},
 			
 			//Test case #7
-			{2, "Data/WordAnalysisTestFiles/WordAnalysis-TestCase6.txt", "", "tokenize, ssplit", 0, 23, "4.13",
-			 "i", 3, 3, "1.00"},
+			{2, "TestData/WordAnalysisTestFiles/WordAnalysis-TestCase6.txt", "", "tokenize, ssplit", 0, 23, "4.13",
+			 "i", 3, 3},
 			 
 			//Test case #8
-			{2, "Data/WordAnalysisTestFiles/WordAnalysis-TestCase7.txt", "", "tokenize, ssplit", 0, 12, "3.83",
-			 "is", 1, 1, "1.00"},
+			{2, "TestData/WordAnalysisTestFiles/WordAnalysis-TestCase7.txt", "", "tokenize, ssplit", 0, 12, "3.83",
+			 "is", 1, 1},
 			
 			//Test case #9
-			{2, "Data/WordAnalysisTestFiles/WordAnalysis-TestCase8.txt", "", "tokenize, ssplit", 0, 128, "4.53",
-			 "the", 3, 6, "2.00"},
+			{2, "TestData/WordAnalysisTestFiles/WordAnalysis-TestCase8.txt", "", "tokenize, ssplit", 0, 128, "4.53",
+			 "the", 3, 6},
 			
 			//Test case #10
 			{1, "", "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\", "tokenize, ssplit", 0, 0, "0.00",
-			 "Text does not include any valid words", 0, 0, "0.00"},
+			 "Text does not include any valid words", 0, 0},
 
 			//Test case #11
 			{1, "", "1234567890", "tokenize, ssplit", 0, 0, "0.00",
-			 "Text does not include any valid words", 0, 0, "0.00"},
+			 "Text does not include any valid words", 0, 0},
 			
 			//Test case #12
 			{1, "", "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890", "tokenize, ssplit", 0, 0, "0.00",
-			 "Text does not include any valid words", 0, 0, "0.00"}
+			 "Text does not include any valid words", 0, 0}
 			 
 		});
 	}
@@ -129,7 +148,7 @@ public class WordAnalysisTest
 		WordAnalysis test1 = new WordAnalysis(userInput, propertiesForNLP, paragraphCounter);
 		int wordCount = test1.wordCount();
 		String mostFrequentWord = test1.mostFrequentWord();
-		if (testSelector == 1)
+		if(testSelector == 1)
 		{
 			paragraphCounter = test1.getParagraphCount();
 		}
@@ -137,12 +156,10 @@ public class WordAnalysisTest
 		int sentenceCount = test1.getSentenceCount();
 		DecimalFormat round = new DecimalFormat("0.00");
 		String averageWordLengthString = round.format(test1.averageWordLength());
-		String averageSentencesPerParaString = round.format(test1.getAverageSentencesPerPara());
-		assertEquals(expectedResult1, wordCount);		
+		assertEquals(expectedResult1, wordCount);
 		assertEquals(expectedResult2, averageWordLengthString);
 		assertEquals(expectedResult3, mostFrequentWord);
 		assertEquals(expectedResult4, paragraphCounter);
 		assertEquals(expectedResult5, sentenceCount);
-		assertEquals(expectedResult6, averageSentencesPerParaString);
 	}
 }

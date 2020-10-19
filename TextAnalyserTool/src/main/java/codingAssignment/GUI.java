@@ -62,7 +62,7 @@ public class GUI extends Application
 	public static int numberOfDecimalPlaces = 0;
 	private XYChart.Series<String, Number> characterAnalysisBarChartData;
 	private static TextField textForAnalysis = new TextField();
-	private static Label applicationHeader = new Label(), OR = new Label(), displayInputMethodHeader = new Label(), displayAnalysisTypeHeader = new Label(), importFileSuccessMessage = new Label(), displayTextHeader = new Label(), characterBarChartHeader = new Label(), sentimentResultsHeader = new Label(), wordAnalysisResultsHeader = new Label(), partsOfSpeechAnalysisResultsHeader = new Label(), characterPieChartHeader = new Label();
+	private static Label applicationHeader = new Label(), or = new Label(), displayInputMethodHeader = new Label(), displayAnalysisTypeHeader = new Label(), importFileSuccessMessage = new Label(), displayTextHeader = new Label(), characterBarChartHeader = new Label(), sentimentResultsHeader = new Label(), wordAnalysisResultsHeader = new Label(), partsOfSpeechAnalysisResultsHeader = new Label(), characterPieChartHeader = new Label();
 	private static TextArea displayText = new TextArea();
 	private static PieChart characterAnalysisPieChart = new PieChart(), sentimentAnalysisPieChart = new PieChart();
 	private static Rectangle analysisBackgroundBox = new Rectangle(), inputBackgroundBox = new Rectangle();
@@ -200,9 +200,9 @@ public class GUI extends Application
     	applicationHeader.setAlignment(Pos.CENTER);
     	applicationHeader.setText("Text Analyser");
     	
-    	OR.setLayoutX(36); OR.setLayoutY(187);
-    	OR.setStyle("-fx-font-size: 16px");
-    	OR.setText("OR");
+    	or.setLayoutX(36); or.setLayoutY(187);
+    	or.setStyle("-fx-font-size: 16px");
+    	or.setText("OR");
 
     	displayInputMethodHeader.setLayoutX(36); displayInputMethodHeader.setLayoutY(100);
     	displayInputMethodHeader.setStyle("-fx-font-size: 18px");
@@ -344,7 +344,7 @@ public class GUI extends Application
         root.setPrefWidth(743);
         root.getChildren().add(inputBackgroundBox);
         root.getChildren().add(applicationHeader);
-        root.getChildren().add(OR);
+        root.getChildren().add(or);
         root.getChildren().add(displayInputMethodHeader);
         root.getChildren().add(displayAnalysisTypeHeader);
         root.getChildren().add(displayCharacterAnalysis);
