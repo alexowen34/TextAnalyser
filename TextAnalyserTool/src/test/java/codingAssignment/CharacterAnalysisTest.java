@@ -371,8 +371,8 @@ public class CharacterAnalysisTest
 				String result2 = intValidPlaceholder.toString();
 				String result3 = stringArrayForRoundedDouble.toString();
 				String result5 = stringValidPlaceholder.toString();
-				String result6 = String.valueOf(test1.totalCount());
-				String result7 = round.format(test1.totalPercentage());
+				String result6 = String.valueOf(test1.getTotalCount());
+				String result7 = round.format(test1.getTotalPercentage());
 				assertEquals(expectedResult1, result1);
 				assertEquals(expectedResult2, result2);
 				if(i == 1)
@@ -431,8 +431,8 @@ public class CharacterAnalysisTest
 			String result2 = intValidPlaceholder.toString();
 			String result3 = stringArrayForRoundedDouble.toString();
 			String result4 = stringValidPlaceholder2.toString();
-			String result5 = String.valueOf(test2.totalCount());
-			String result6 = round.format(test2.totalPercentage());
+			String result5 = String.valueOf(test2.getTotalCount());
+			String result6 = round.format(test2.getTotalPercentage());
 			assertEquals(expectedResult1, result1);
 			assertEquals(expectedResult2, result2);
 			assertEquals(expectedResult3, result3);

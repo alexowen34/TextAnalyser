@@ -49,9 +49,14 @@ public class WordAnalysis extends TextToBeAnalysed
 		this.paragraphCount = paragraphCount;
 	}
 	
-	//Constructor method that is used by sentimentAnalysis method in LanguageAnalysis object to pass in required data to this object.
-	public WordAnalysis(String propertiesForNLP)
+	/*
+	 * Constructor method that is used by sentimentAnalysis method in LanguageAnalysis object to pass in required data to this object.
+	 * It passes the usersInput to the textToBeAnalysed variable in the abstract class as this needs to happen for the test to run successfully
+	 * otherwise it woulden't be stored in memory.
+	 */
+	public WordAnalysis(String userInput, String propertiesForNLP, String NA)
 	{
+		textToBeAnalysed = userInput;
 		this.propertiesForNLP = propertiesForNLP;
 	}
 	

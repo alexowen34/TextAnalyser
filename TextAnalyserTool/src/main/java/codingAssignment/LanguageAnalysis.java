@@ -32,6 +32,10 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	private String propertiesForNLP;
 
 	//Below variables are populated via methods in this class.
+	@SuppressWarnings("unused")
+	private int countSum;
+	@SuppressWarnings("unused")
+	private double percentageSum;
 	private int [] summaryCount;
 	private double [] summaryPercentage;
 	private String[] sentencesArray;
@@ -49,6 +53,16 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	public LanguageAnalysis(String propertiesForNLP, int analysisOption, 
 							int sortingOptionType) 
 	{
+		this.propertiesForNLP = propertiesForNLP;
+		this.analysisOption = analysisOption;
+		this.sortingOptionType = sortingOptionType;
+	}
+	
+	//Contructor method that is used by the LanguageAnalysisTest class in order to pass the users input to the abstract 'TextToBeAnalysed' class.
+	public LanguageAnalysis(String userInput, String propertiesForNLP, int analysisOption, 
+							int sortingOptionType) 
+	{
+		textToBeAnalysed = userInput;
 		this.propertiesForNLP = propertiesForNLP;
 		this.analysisOption = analysisOption;
 		this.sortingOptionType = sortingOptionType;
@@ -94,7 +108,7 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	 */
 	public void sentimentAnalysis()
 	{
-		WordAnalysis sentences = new WordAnalysis(propertiesForNLP);
+		WordAnalysis sentences = new WordAnalysis(textToBeAnalysed, propertiesForNLP, "");
 		List<CoreSentence> listOfSentences = sentences.sentencesListAndCount();
 		HashMap<String, String> sentenceAndSentiment = new HashMap<String,String>();
 		for(CoreSentence sentence : listOfSentences)
@@ -244,6 +258,18 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	public double[] getSummaryPercentage()
 	{
 		return summaryPercentage;
+	}
+	
+	//This method returns the total count frequency for the choosen analysis type. It is used in this project only for testing purposes.
+	public int getTotalCount()
+	{
+		return countSum = Arrays.stream(summaryCount).sum();
+	}
+	
+	//This method returns the total percentage/relative frequency for the choosen analysis type. It is used in this project only for testing purposes.
+	public double getTotalPercentage()
+	{
+		return percentageSum = Arrays.stream(summaryPercentage).sum();
 	}
 	
 	public ObservableList<Data> pieChartData()
