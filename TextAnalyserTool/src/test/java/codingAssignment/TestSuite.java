@@ -15,7 +15,7 @@ import org.junit.runners.Suite;
 	CollectionToArrayTest.class,
 	//CharacterAnalysisTest.class,
 	WordAnalysisTest.class,
-	//LanguageAnalysisTest.class
+	SentimentAnalysisTest.class
 })
 
 public class TestSuite {
