@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 public class DecimalPlaces 
 {	

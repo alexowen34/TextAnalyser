@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 import static org.junit.Assert.*;
 
@@ -8,19 +8,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
 import javax.swing.SwingUtilities;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import javafx.embed.swing.JFXPanel;
 
 @RunWith(value = Parameterized.class)
-public class WordAnalysisTest extends TextToBeAnalysed
+public class WordAnalysisTest
 {
 	//Stores the required data, for the @Test method, that is populated by the constructor method.
 	private int testSelector;

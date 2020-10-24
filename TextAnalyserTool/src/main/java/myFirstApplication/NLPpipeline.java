@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 import java.util.Properties;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;

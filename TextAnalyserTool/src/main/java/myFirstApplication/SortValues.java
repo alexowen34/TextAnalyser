@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 import java.util.Collections;
 import java.util.Comparator;

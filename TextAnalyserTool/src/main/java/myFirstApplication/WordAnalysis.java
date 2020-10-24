@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

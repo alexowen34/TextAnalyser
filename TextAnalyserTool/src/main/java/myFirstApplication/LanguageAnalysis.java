@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;

@@ -1,4 +1,4 @@
-package codingAssignment;
+package myFirstApplication;
 
 import static org.junit.Assert.*;
 
@@ -11,6 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import myFirstApplication.CharacterAnalysis;
+import myFirstApplication.HandleTextFiles;
 
 @RunWith(value = Parameterized.class)
 public class CharacterAnalysisTest 

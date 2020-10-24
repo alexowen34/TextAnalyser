@@ -5,7 +5,7 @@
 //#2: Practice writing data to a DB.
 //#3: Add option to export to Excel.
 
-package codingAssignment;
+package myFirstApplication;
 
 import java.io.File;
 import java.io.FileNotFoundException;
