@@ -30,6 +30,10 @@ public class CharacterAnalysis extends TextToBeAnalysed
 	private char[] referenceCharactersForTable;
 
 	//Below variables are populated via methods in this class.
+	@SuppressWarnings("unused")
+	private int countSum;
+	@SuppressWarnings("unused")
+	private double percentageSum;
 	private int[] countFrequencyOutput;
 	private int [] summaryCount;
 	private double[] percentageFrequencyOutput;
@@ -47,11 +51,24 @@ public class CharacterAnalysis extends TextToBeAnalysed
 		this.sortingOptionType = sortingOptionType;
 	}
 	
+	//Constructor method that is used to pass in the relevant data for testing (CharacterAnalysisTest.java).
+	public CharacterAnalysis (String inputString, String referenceOption, int percentageCalcType, int sortingOptionType, int decimalPlaces)
+	{
+		textToBeAnalysed = inputString;
+		this.referenceOption = referenceOption;
+		char [] character = referenceOption.toCharArray();
+		referenceCharactersForTable = character;
+		this.percentageCalcType = percentageCalcType;
+		this.sortingOptionType = sortingOptionType;
+		GUI.numberOfDecimalPlaces = decimalPlaces;
+	}
+	
 	//Constructor method that is shortened for 'relativeCharFrequencies' and 'summary' method that is created and called from within this class.
-	public CharacterAnalysis (String referenceOption)
+	public CharacterAnalysis (String inputString, String referenceOption)
 	{
 		char [] character = referenceOption.toCharArray();
 		referenceCharactersForTable = character;
+		textToBeAnalysed = inputString;
 	}
 	
 	//This method is called from 'countCharFrequencies' method - see comments in this method for more detail.
@@ -118,7 +135,7 @@ public class CharacterAnalysis extends TextToBeAnalysed
 	 */
 	public double[] relativeCharFrequencies()
 	{	
-		CharacterAnalysis percentage = new CharacterAnalysis(GUI.fullListOfReferenceCharacters);
+		CharacterAnalysis percentage = new CharacterAnalysis(textToBeAnalysed, GUI.fullListOfReferenceCharacters);
 		int sumOfFullString = Arrays.stream(percentage.countCharFrequencies()).sum();
 		int arraySum = 0;
 		switch(percentageCalcType)
@@ -157,7 +174,7 @@ public class CharacterAnalysis extends TextToBeAnalysed
 		CharacterAnalysis[] summary = new CharacterAnalysis[3];
 		for(int i = 0; i < summary.length; i++)
 		{
-			summary[i] = new CharacterAnalysis(filterCharacters[i]);
+			summary[i] = new CharacterAnalysis(textToBeAnalysed, filterCharacters[i]);
 			for(int j = 0; j < summary[i].countCharFrequencies().length; j++)
 			{
 				countSummaryOutput[i] += summary[i].countCharFrequencies()[j];
@@ -184,6 +201,18 @@ public class CharacterAnalysis extends TextToBeAnalysed
 	public double[] getPercentageSummaryOutput()
 	{
 		return summaryPercentage;
+	}
+	
+	//This method returns the total count frequency. It is used in this project only for testing purposes.
+	public int getTotalCount()
+	{
+		return countSum = Arrays.stream(countFrequencyOutput).sum();
+	}
+	
+	//This method returns the total percentage/relative frequency. It is used in this project only for testing purposes.
+	public double getTotalPercentage()
+	{
+		return percentageSum = Arrays.stream(percentageFrequencyOutput).sum();
 	}
 	
 	public XYChart.Series<String, Number> barChartData()

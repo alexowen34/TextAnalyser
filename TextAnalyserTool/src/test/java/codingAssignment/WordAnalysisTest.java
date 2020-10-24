@@ -35,7 +35,7 @@ public class WordAnalysisTest extends TextToBeAnalysed
 	private int expectedResult5;
 	
     @BeforeClass
-    public static void initToolkit() throws InterruptedException
+    public static void initializeToolkit() throws InterruptedException
     {
         final CountDownLatch latch = new CountDownLatch(1);
         SwingUtilities.invokeLater(() -> {

@@ -10,12 +10,13 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	SortValuesTest.class,
-	HandleTextFilesTest.class,
+	CharacterAnalysisTest.class,
 	CollectionToArrayTest.class,
-	//CharacterAnalysisTest.class,
-	WordAnalysisTest.class,
-	SentimentAnalysisTest.class
+	HandleTextFilesTest.class,
+	PartsOfSpeechAnalysisTest.class,
+	SentimentAnalysisTest.class,
+	SortValuesTest.class,
+	WordAnalysisTest.class
 })
 
 public class TestSuite {
