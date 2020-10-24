@@ -1,6 +1,6 @@
 //TO DO:
 
-//#1: Add new comments and update exisiting comments following move to GUI from TUI
+//#1: Add new comments and update exisiting comments following move to GUI from TUI.
 // ONCE THE ABOVE STEPS HAVE BEEN COMPLETE, APP WOULD BE SUITABLE FOR PUBLIC.
 //#2: Practice writing data to a DB.
 //#3: Add option to export to Excel.
