@@ -1,20 +1,14 @@
 package myFirstApplication;
 
 import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import javax.swing.SwingUtilities;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import javafx.embed.swing.JFXPanel;
 
 @RunWith(value = Parameterized.class)
 public class WordAnalysisTest
@@ -31,24 +25,16 @@ public class WordAnalysisTest
 	private int expectedResult4;
 	private int expectedResult5;
 	
-    @BeforeClass
-    public static void initializeToolkit() throws InterruptedException
-    {
-        final CountDownLatch latch = new CountDownLatch(1);
-        SwingUtilities.invokeLater(() -> {
-            new JFXPanel(); // initializes JavaFX environment
-            latch.countDown();
-        });
-        if(!latch.await(5L, TimeUnit.SECONDS))
-        {
-        	throw new ExceptionInInitializerError();
-        }
-    }
-	
 	//Constructor method that takes the required data and passes it to the global variables.
 	public WordAnalysisTest(int testSelector, String fileLocation, String userInput, String propertiesForNLP, int paragraphCounter, int expectedResult1, 
 			String expectedResult2, String expectedResult3, int expectedResult4, int expectedResult5)
 	{
+		/*
+		 * As the WordAnalysis class is instantiated in @Test methods, that class references the GUI class which uses JavaFX so 
+		 * therefore the JavaFX enviroment needs to be initialized.
+		 */
+		JavaFXInitializer.initializeToolkit();
+		
 		this.testSelector = testSelector;
 		this.fileLocation = fileLocation;
 		this.userInput = userInput;

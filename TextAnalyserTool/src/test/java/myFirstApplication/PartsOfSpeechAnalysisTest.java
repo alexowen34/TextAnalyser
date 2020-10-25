@@ -1,7 +1,6 @@
 package myFirstApplication;
 
 import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,12 +10,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import myFirstApplication.HandleTextFiles;
 import myFirstApplication.LanguageAnalysis;
 
 @RunWith(value = Parameterized.class)
-public class PartsOfSpeechAnalysisTest 
+public class PartsOfSpeechAnalysisTest
 {
 	//Stores the required data, for the @Test method, that is populated by the constructor method.
 	private int testSelector;
@@ -37,7 +35,12 @@ public class PartsOfSpeechAnalysisTest
 			int sortingOptionType, String expectedResult1, String expectedResult2, String expectedResult3, String expectedResult4,
 			String expectedResult5, int expectedResult6, String expectedResult7)
 	{
-		GUIInitializer.initializeToolkit();
+		/*
+		 * As the LanguageAnalysis class is instantiated in @Test methods, that class references the GUI class which uses JavaFX so 
+		 * therefore the JavaFX enviroment needs to be initialized.
+		 */
+		JavaFXInitializer.initializeToolkit();
+		
 		this.testSelector = testSelector;
 		this.fileLocation = fileLocation;
 		this.userInput = userInput;
@@ -65,153 +68,153 @@ public class PartsOfSpeechAnalysisTest
 			//POSanalysis
 			
 			//Test case #0
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase15.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase15.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Wh-pronoun]", "[what, whom, who]", "[Wh-pronoun, Wh-pronoun, Wh-pronoun]", "[3]",
 			 "[100.00]", 3, "100.00"},
 
 			//Test case #1
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase16.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase16.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Wh-determiner]", "[which, that, whatever]", "[Wh-determiner, Wh-determiner, Wh-determiner]", "[3]",
 			 "[100.00]", 3, "100.00"},
 			
 			//Test case #2
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase17.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase17.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Wh-adverb]", "[how, why, where, when]", "[Wh-adverb, Wh-adverb, Wh-adverb, Wh-adverb]", "[4]",
 			 "[100.00]", 4, "100.00"},
 			
 			//Test case #3
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase18.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase18.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Verb, past tense]", "[were, came, was, said, did]", "[Verb, past tense, Verb, past tense, Verb, past tense, Verb, past tense, Verb, past tense]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #4
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase19.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase19.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Verb, past participle]", "[been, created, driven, done, stated]", "[Verb, past participle, Verb, past participle, Verb, past participle, Verb, past participle, Verb, past participle]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #5
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase20.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase20.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Verb, non-3rd person singular present]", "[provide, remain, want, propose, seem]", "[Verb, non-3rd person singular present, Verb, non-3rd person singular present, Verb, non-3rd person singular present, Verb, non-3rd person singular present, Verb, non-3rd person singular present]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #6
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase21.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase21.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Verb, gerund or present participle]", "[retiring, killing, replacing, being, saying]", "[Verb, gerund or present participle, Verb, gerund or present participle, Verb, gerund or present participle, Verb, gerund or present participle, Verb, gerund or present participle]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #7
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase22.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase22.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Verb, base form]", "[add, bode, die, be, prove]", "[Verb, base form, Verb, base form, Verb, base form, Verb, base form, Verb, base form]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #8
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase23.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase23.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Verb, 3rd person singular present]", "[comes, is, has, seems, proves]","[Verb, 3rd person singular present, Verb, 3rd person singular present, Verb, 3rd person singular present, Verb, 3rd person singular present, Verb, 3rd person singular present]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #9
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase24.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase24.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[to]", "[na, to, ta]","[to, to, to]", "[3]",
 			 "[100.00]", 3, "100.00"},
 			
 			//Test case #10
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase25.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase25.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Symbol]", "[|, \\, ¬, ~, _]","[Symbol, Symbol, Symbol, Symbol, Symbol]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #11
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase26.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase26.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Proper noun, singular]", "[saturday, london, july, wednesday, washington]","[Proper noun, singular, Proper noun, singular, Proper noun, singular, Proper noun, singular, Proper noun, singular]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #12
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase27.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase27.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Noun, plural]", "[appeals, israelians, forces, muslims, motorsports]","[Noun, plural, Noun, plural, Noun, plural, Noun, plural, Noun, plural]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #13
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase28.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase28.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Preposition or subordinating conjunction]", "[though, whether, among, than, between]","[Preposition or subordinating conjunction, Preposition or subordinating conjunction, Preposition or subordinating conjunction, Preposition or subordinating conjunction, Preposition or subordinating conjunction]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #14
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase29.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase29.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Personal pronoun]", "[itself, them, he, him, they]","[Personal pronoun, Personal pronoun, Personal pronoun, Personal pronoun, Personal pronoun]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #15
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase30.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase30.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Possessive pronoun]", "[his, her, their, its, your]","[Possessive pronoun, Possessive pronoun, Possessive pronoun, Possessive pronoun, Possessive pronoun]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #16
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase31.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase31.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Noun, singular or mass]", "[punchline, week, idea, article, story]","[Noun, singular or mass, Noun, singular or mass, Noun, singular or mass, Noun, singular or mass, Noun, singular or mass]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #17
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase32.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase32.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Modal]", "[can, would, will, could, should]","[Modal, Modal, Modal, Modal, Modal]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #18
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase33.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase33.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Interjection]", "[hi, uh, eh, yes, hello]","[Interjection, Interjection, Interjection, Interjection, Interjection]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #19
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase34.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase34.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Foreign word]", "[c'est, etc, déjà, guerre, comme]","[Foreign word, Foreign word, Foreign word, Foreign word, Foreign word]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #20
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase35.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase35.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Determiner]", "[some, another, this, an, any]","[Determiner, Determiner, Determiner, Determiner, Determiner]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #21
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase36.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase36.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Coordinating conjunction]", "[nor, but, or, and, neither]","[Coordinating conjunction, Coordinating conjunction, Coordinating conjunction, Coordinating conjunction, Coordinating conjunction]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #22
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase37.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase37.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Cardinal number]", "[15, 4, 26/07/1998, sixteen, two]","[Cardinal number, Cardinal number, Cardinal number, Cardinal number, Cardinal number]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #23
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase38.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase38.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Adverb]", "[very, closely, currently, temporarily, soon]","[Adverb, Adverb, Adverb, Adverb, Adverb]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #24
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase39.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase39.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Adjective, superlative]", "[hottest, fewest, slightest, nearest, wildest]","[Adjective, superlative, Adjective, superlative, Adjective, superlative, Adjective, superlative, Adjective, superlative]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #25
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase40.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase40.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Adjective, comparative]", "[larger, fatter, cleaner, lower, sadder]","[Adjective, comparative, Adjective, comparative, Adjective, comparative, Adjective, comparative, Adjective, comparative]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #26
-			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase41.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{2,"TestData/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase41.txt", "", 0, "tokenize, ssplit, pos", 1, 
 			 "[Adjective]", "[eastern, nervous, succesful, spiritual, associate]","[Adjective, Adjective, Adjective, Adjective, Adjective]", "[5]",
 			 "[100.00]", 5, "100.00"},
 			
 			//Test case #27
-			{1,"", "Hello World, my name is Alex Owen.", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{1,"", "Hello World, my name is Alex Owen.", 0, "tokenize, ssplit, pos", 1, 
 			 "[Interjection, Proper noun, singular, Noun, singular or mass, Possessive pronoun, Verb, 3rd person singular present]",
 			 "[Alex, Hello, Owen, name, is, World, my]","[Proper noun, singular, Interjection, Proper noun, singular, Noun, singular or mass, Verb, 3rd person singular present, Proper noun, singular, Possessive pronoun]", 
 			 "[1, 3, 1, 1, 1]", "[14.29, 42.86, 14.29, 14.29, 14.29]", 7, "100.00"},
 
 			//Test case #28
-			{1,"", "Alex Alex Owen Alex Owen Owen Alex", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{1,"", "Alex Alex Owen Alex Owen Owen Alex", 0, "tokenize, ssplit, pos", 1, 
 			 "[Proper noun, singular]", "[Alex, Owen]","[Proper noun, singular, Proper noun, singular]", "[2]",
 			 "[100.00]", 2, "100.00"},
 						
 			//Test case #29
-			{1,"", "This application uses parts of speech analysis to gain a deeper understanding of the language used in the given text.", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{1,"", "This application uses parts of speech analysis to gain a deeper understanding of the language used in the given text.", 0, "tokenize, ssplit, pos", 1, 
 			 "[Noun, singular or mass, Preposition or subordinating conjunction, Determiner, Noun, plural, Verb, base form, to, Verb, past participle, Adjective, comparative, Verb, 3rd person singular present]",
 			 "[a, given, in, language, used, analysis, gain, the, application, speech, of, parts, This, understanding, uses, deeper, to, text]",
 			 "[Determiner, Verb, past participle, Preposition or subordinating conjunction, Noun, singular or mass, Verb, past participle, Noun, singular or mass, Verb, base form, Determiner, Noun, singular or mass, Noun, singular or mass, Preposition or subordinating conjunction, Noun, plural, Determiner, Noun, singular or mass, Verb, 3rd person singular present, Adjective, comparative, to, Noun, singular or mass]", 
@@ -219,7 +222,7 @@ public class PartsOfSpeechAnalysisTest
 	     	 18, "100.00"},
 			
 			//Test case #30
-			{1,"", "This application uses parts of speech analysis to gain a deeper understanding of the language used in the given text.", 0, "tokenize, ssplit, pos, parse, sentiment", 2, 
+			{1,"", "This application uses parts of speech analysis to gain a deeper understanding of the language used in the given text.", 0, "tokenize, ssplit, pos", 2, 
 			 "[Noun, singular or mass, Determiner, Preposition or subordinating conjunction, Verb, past participle, Noun, plural, Verb, base form, to, Adjective, comparative, Verb, 3rd person singular present]",
 			 "[a, given, in, language, used, analysis, gain, the, application, speech, of, parts, This, understanding, uses, deeper, to, text]",
 			 "[Determiner, Verb, past participle, Preposition or subordinating conjunction, Noun, singular or mass, Verb, past participle, Noun, singular or mass, Verb, base form, Determiner, Noun, singular or mass, Noun, singular or mass, Preposition or subordinating conjunction, Noun, plural, Determiner, Noun, singular or mass, Verb, 3rd person singular present, Adjective, comparative, to, Noun, singular or mass]", 
@@ -227,7 +230,7 @@ public class PartsOfSpeechAnalysisTest
 			 18, "100.00"},
 			
 			//Test case #31
-			{1,"", "This application uses parts of speech analysis to gain a deeper understanding of the language used in the given text.", 0, "tokenize, ssplit, pos, parse, sentiment", 3, 
+			{1,"", "This application uses parts of speech analysis to gain a deeper understanding of the language used in the given text.", 0, "tokenize, ssplit, pos", 3, 
 			 "[Noun, plural, Verb, base form, to, Adjective, comparative, Verb, 3rd person singular present, Preposition or subordinating conjunction, Verb, past participle, Determiner, Noun, singular or mass]",
 			 "[a, given, in, language, used, analysis, gain, the, application, speech, of, parts, This, understanding, uses, deeper, to, text]",
 			 "[Determiner, Verb, past participle, Preposition or subordinating conjunction, Noun, singular or mass, Verb, past participle, Noun, singular or mass, Verb, base form, Determiner, Noun, singular or mass, Noun, singular or mass, Preposition or subordinating conjunction, Noun, plural, Determiner, Noun, singular or mass, Verb, 3rd person singular present, Adjective, comparative, to, Noun, singular or mass]", 
@@ -235,7 +238,7 @@ public class PartsOfSpeechAnalysisTest
 			 18, "100.00"},
 			
 			//Test case #32
-			{1,"", "Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human languages.", 0, "tokenize, ssplit, pos, parse, sentiment", 1, 
+			{1,"", "Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human languages.", 0, "tokenize, ssplit, pos", 1, 
 			 "[Noun, singular or mass, Preposition or subordinating conjunction, Adjective, Coordinating conjunction, Determiner, Noun, plural, Verb, past participle, Verb, 3rd person singular present]",
 			 "[a, linguistics, concerned, languages, language, is, engineering, Natural, intelligence, interactions, the, with, computer, artificial, subfield, and, of, science, processing, information, human, between, computers]",
 			 "[Determiner, Noun, plural, Verb, past participle, Noun, plural, Noun, singular or mass, Verb, 3rd person singular present, Noun, singular or mass, Adjective, Noun, singular or mass, Noun, plural, Determiner, Preposition or subordinating conjunction, Noun, singular or mass, Adjective, Noun, singular or mass, Coordinating conjunction, Preposition or subordinating conjunction, Noun, singular or mass, Noun, singular or mass, Noun, singular or mass, Adjective, Preposition or subordinating conjunction, Noun, plural]", 
@@ -243,7 +246,7 @@ public class PartsOfSpeechAnalysisTest
 			 23, "100.00"},
 			
 			//Test case #33
-			{1,"", "Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human languages.", 0, "tokenize, ssplit, pos, parse, sentiment", 2, 
+			{1,"", "Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human languages.", 0, "tokenize, ssplit, pos", 2, 
 			 "[Noun, singular or mass, Noun, plural, Preposition or subordinating conjunction, Adjective, Determiner, Coordinating conjunction, Verb, past participle, Verb, 3rd person singular present]",
 			 "[a, linguistics, concerned, languages, language, is, engineering, Natural, intelligence, interactions, the, with, computer, artificial, subfield, and, of, science, processing, information, human, between, computers]",
 			 "[Determiner, Noun, plural, Verb, past participle, Noun, plural, Noun, singular or mass, Verb, 3rd person singular present, Noun, singular or mass, Adjective, Noun, singular or mass, Noun, plural, Determiner, Preposition or subordinating conjunction, Noun, singular or mass, Adjective, Noun, singular or mass, Coordinating conjunction, Preposition or subordinating conjunction, Noun, singular or mass, Noun, singular or mass, Noun, singular or mass, Adjective, Preposition or subordinating conjunction, Noun, plural]", 
@@ -251,7 +254,7 @@ public class PartsOfSpeechAnalysisTest
 			 23, "100.00"},
 			
 			//Test case #34
-			{1,"", "Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human languages.", 0, "tokenize, ssplit, pos, parse, sentiment", 3, 
+			{1,"", "Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human languages.", 0, "tokenize, ssplit, pos", 3, 
 			"[Coordinating conjunction, Verb, past participle, Verb, 3rd person singular present, Determiner, Preposition or subordinating conjunction, Adjective, Noun, plural, Noun, singular or mass]",
 			"[a, linguistics, concerned, languages, language, is, engineering, Natural, intelligence, interactions, the, with, computer, artificial, subfield, and, of, science, processing, information, human, between, computers]",
 			"[Determiner, Noun, plural, Verb, past participle, Noun, plural, Noun, singular or mass, Verb, 3rd person singular present, Noun, singular or mass, Adjective, Noun, singular or mass, Noun, plural, Determiner, Preposition or subordinating conjunction, Noun, singular or mass, Adjective, Noun, singular or mass, Coordinating conjunction, Preposition or subordinating conjunction, Noun, singular or mass, Noun, singular or mass, Noun, singular or mass, Adjective, Preposition or subordinating conjunction, Noun, plural]", 

@@ -1,7 +1,6 @@
 package myFirstApplication;
 
 import java.io.FileNotFoundException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,12 +14,11 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 
 /*
- * This class does the more advanced language analysis. The class extends the abstract super class of StringToAnalyse which contains the text the 
- * user has inputted to be analysed.
+ * This class does the more advanced language analysis. The class extends the abstract class of TextToBeAnalysed which contains the text the 
+ * user has inputted to be analysed from the GUI class.
  */
 public class LanguageAnalysis extends TextToBeAnalysed
 {
@@ -49,7 +47,7 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	private SimpleStringProperty POStag;
 	private SimpleStringProperty word;
 	
-	//Constructor method that is used by TUI to pass in required data to this object.
+	//Constructor method that is used by GUI to pass in required data to this object.
 	public LanguageAnalysis(String propertiesForNLP, int analysisOption, 
 							int sortingOptionType) 
 	{
@@ -59,8 +57,7 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	}
 	
 	//Contructor method that is used by the LanguageAnalysisTest class in order to pass the users input to the abstract 'TextToBeAnalysed' class.
-	public LanguageAnalysis(String userInput, String propertiesForNLP, int analysisOption, 
-							int sortingOptionType) 
+	public LanguageAnalysis(String userInput, String propertiesForNLP, int analysisOption, int sortingOptionType) 
 	{
 		textToBeAnalysed = userInput;
 		this.propertiesForNLP = propertiesForNLP;
@@ -68,13 +65,14 @@ public class LanguageAnalysis extends TextToBeAnalysed
 		this.sortingOptionType = sortingOptionType;
 	}
 	
-	//Contructor method that is used soley for GUI table creation.
-	public LanguageAnalysis(String sentences, String sentiments)
+	//Contructor method that is used soley for GUI table creation (Sentiment analysis)
+	public LanguageAnalysis(String sentiments, String sentences)
 	{
+		this.sentiments = new SimpleStringProperty(sentiments);	
 		this.sentences = new SimpleStringProperty(sentences);
-		this.sentiments = new SimpleStringProperty(sentiments);		
 	}
 	
+	//Contructor method that is used soley for GUI table creation (POS analysis)
 	public LanguageAnalysis(String POStag, String word, String NA)
 	{
 		this.POStag = new SimpleStringProperty(POStag);
@@ -148,8 +146,7 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	
 	/* This method returns the parts of speech (POS) analysis (i.e. nouns, adjectives, adverbs using the StanfordCoreNLP libary) and
 	 * each unique word (as HashMap removes duplicate keys/words).POS tags are transformed into descriptions which are contained in the POStags.txt file. 
-	 * The method also puts the POS description and unique words into an array so it can be printed out in the 'toTable' method. Finally, the 
-	 * method then passes the required data into the 'summary' method to create a overall summary of which POS descriptions have been observed.
+	 * Finally, the method then passes the required data into the 'summary' method to create a overall summary of which POS descriptions have been observed.
 	*/
 	public void partsOfSpeechAnalsis() throws FileNotFoundException
 	{	
@@ -209,7 +206,7 @@ public class LanguageAnalysis extends TextToBeAnalysed
 	
 	/*
 	 * This method returns the required data (count, percentage and chart) to create a summary for both the POS and sentiment analysis.
-	 * For POS analysis in particular, it sorts the values in DESC or ASC order depending on what the user selects in TUI menu option.
+	 * For POS analysis in particular, it sorts the values in DESC or ASC order depending on what the user selects in GUI menu option.
 	 * Sentiment analysis is not sorted as the number of sentiment categories/descriptions is fixed and sequential i.e. Very positive, Positive etc.
 	 * so it make sense to keep in hard coded order to make summary easier to read for user.
 	 */
@@ -272,57 +269,38 @@ public class LanguageAnalysis extends TextToBeAnalysed
 		return percentageSum = Arrays.stream(summaryPercentage).sum();
 	}
 	
+    //Returns the data for the senitment summary pie chart.
 	public ObservableList<Data> pieChartData()
 	{
-		DecimalPlaces stringRep = new DecimalPlaces();
-		DecimalFormat round = new DecimalFormat(stringRep.stringRepresentationOfDecimals());		
-		for(int i = 0; i < rowDescription.length; i++)
-		{
-			rowDescription[i] += " ("+String.valueOf(round.format(summaryPercentage[i]))+"%)";
-		}
-		ArrayList<PieChart.Data> data = new ArrayList<PieChart.Data>();
-		for(int i = 0; i < summaryCount.length; i++)
-		{
-			if(summaryCount[i] != 0)
-			{
-				data.add(new PieChart.Data(rowDescription[i], summaryCount[i]));
-			}
-		}
-		ObservableList<Data> list = FXCollections.observableArrayList();
-		list.addAll(data);
-		for(int i = 0; i < rowDescription.length; i++)
-		{
-			String length = "";
-			length = String.valueOf((int) summaryPercentage[i]);
-			int charsToRemove = GUI.numberOfDecimalPlaces + length.length() + 4;
-			StringBuilder removeDecimals = new StringBuilder(rowDescription[i]);
-			removeDecimals.reverse();
-			removeDecimals.delete(0, charsToRemove);
-			removeDecimals.reverse();
-			rowDescription[i] = removeDecimals.toString();
-			rowDescription[i] = rowDescription[i].trim();
-		}
-		return list;
+		CreatePieChartData populatePieChartData = new CreatePieChartData(rowDescription, summaryPercentage, summaryCount);
+		return populatePieChartData.pieChartData();
 	}
 	
+    //Returns the data for the sentiment analysis table.
 	public ObservableList<LanguageAnalysis> sentimentTableData()
 	{
-		ArrayList<LanguageAnalysis> data = new ArrayList<LanguageAnalysis>();
-		for(int i = 0; i < sentencesArray.length; i++)
-		{
-			data.add(new LanguageAnalysis(sentencesArray[i], sentimentsArray[i]));
-		}
-		ObservableList<LanguageAnalysis> list = FXCollections.observableArrayList();
-		list.addAll(data);
-		return list;
+		return createTableData(sentimentsArray, sentencesArray, "Sentiment");
 	}
 	
+    //Returns the data for the parts of speech analysis table.
 	public ObservableList<LanguageAnalysis> partsOfSpeechTableData()
 	{
+		return createTableData(arrayOfPOS, arrayOfWords, "POS");
+	}
+	
+	//Used to create the ObservableList for either the senitment or parts of speech analysis tables.
+	private ObservableList<LanguageAnalysis> createTableData(String label[], String value[], String type)
+	{
 		ArrayList<LanguageAnalysis> data = new ArrayList<LanguageAnalysis>();
-		for(int i = 0; i < arrayOfPOS.length; i++)
+		for(int i = 0; i < label.length; i++)
 		{
-			data.add(new LanguageAnalysis(arrayOfPOS[i], arrayOfWords[i], ""));
+			switch(type)
+			{
+				case "Sentiment": data.add(new LanguageAnalysis(label[i], value[i]));
+				break;
+				case "POS": data.add(new LanguageAnalysis(label[i], value[i], ""));
+				break;
+			}
 		}
 		ObservableList<LanguageAnalysis> list = FXCollections.observableArrayList();
 		list.addAll(data);

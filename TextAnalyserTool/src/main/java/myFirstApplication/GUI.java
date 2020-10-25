@@ -1,9 +1,6 @@
-//TO DO:
-
-//#1: Add new comments and update exisiting comments following move to GUI from TUI.
-// ONCE THE ABOVE STEPS HAVE BEEN COMPLETE, APP WOULD BE SUITABLE FOR PUBLIC.
-//#2: Practice writing data to a DB.
-//#3: Add option to export to Excel.
+//Planned features to add in:
+//#1: Practice writing and recording data to a DB i.e. the users text and it's results.
+//#2: Add option to export to Excel.
 
 package myFirstApplication;
 
@@ -175,8 +172,9 @@ public class GUI extends Application
     {
         Image[] img = new Image[filePaths.length];
         ImageView[] view = new ImageView[filePaths.length];
-        for(int i = 0; i < filePaths.length; i++)
+        for(int i = 0; i < arrayOfBottomButtons.length; i++)
         {
+        	//Leaves out buttons at index 2 and 3 in the array as they don't require images.
         	if(i != 2 && i != 3)
         	{
             	img[i] = new Image(filePaths[i]);
@@ -326,10 +324,13 @@ public class GUI extends Application
     public void start(Stage primaryStage) throws Exception 
     {
 		/*
-		 * The below commented out code links to the FXML file incase it's needed again in the future.
+		 * The below commented out code links to the FXML file incase it's needed in the future.
 		 * root = FXMLLoader.load(getClass().getResource("Main.fxml"));
          */
+		
         initialize();
+
+		//The below code calls methods to set up the JavaFX components i.e. set sizes, set layout, add images, add action events etc.
         setupTopButtons();
         setupBottomButtons();
         addIconsToButtons(blackIconsFilePaths);
@@ -339,6 +340,8 @@ public class GUI extends Application
         setupComboBoxs();
         setupRectangles();
         setupOther();
+        
+        //This code adds the JavaFX components, that were setup in the above methods, to the AnchorPane.
         root.setPrefHeight(905);
         root.setPrefWidth(743);
         root.getChildren().add(inputBackgroundBox);
@@ -379,7 +382,10 @@ public class GUI extends Application
         root.getChildren().add(displayCharacterPieChart);
         root.getChildren().add(characterPieChartHeader);
         root.getChildren().add(displayCharacterBarChart);
+        
         Scene scene = new Scene(root);
+        
+        //The below code toggles on/off the CSS whenever the darkModeActivate button is clicked.
         darkModeActivate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) 
@@ -391,6 +397,8 @@ public class GUI extends Application
                 	darkModeActivate.setText("White Mode");
                 	inputBackgroundBox.setStyle("-fx-fill: #283149");
                     analysisBackgroundBox.setStyle("-fx-fill: #283149");
+                    
+                    //Replaces the black icons on the buttons with the white icons.
                     addIconsToButtons(whiteIconsFilePaths);
                 }
                 else {
@@ -399,21 +407,28 @@ public class GUI extends Application
                 	darkModeActivate.setText("Dark Mode");
                     inputBackgroundBox.setStyle("-fx-fill: #eaeaea");
                     analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
+                    
+                    //Replaces the white icons on the buttons with the black icons.
                     addIconsToButtons(blackIconsFilePaths);
                 }
             }
         });
+        
         primaryStage.setTitle("Text Analyser");
         primaryStage.setScene(scene);
+        
+        //The below code configures the primary stage so that the width and height can not be made smaller or larger.
         primaryStage.setMaxHeight(905+48);
         primaryStage.setMaxWidth(743+18);
         primaryStage.setMinHeight(905+48);
         primaryStage.setMinWidth(743+18);
+        
         primaryStage.show();
     }
     
     private void initialize() 
     {
+    	//Hides the relevant JavaFX components for when the application starts. This method is called by the start method.
     	importFileSuccessMessage.setVisible(false);
         analysisBackgroundBox.setVisible(false);
         displayTextHeader.setVisible(false);
@@ -437,29 +452,21 @@ public class GUI extends Application
         partsOfSpeechAnalysisResultsHeader.setVisible(false);
     }
    
-    public void getFilePath(ActionEvent event) throws FileNotFoundException
+    private void getFilePath(ActionEvent event) throws FileNotFoundException
     {
     	textForAnalysis.clear();
-    	FileChooser fileChoose = new FileChooser();
+    	FileChooser fileChoose = new FileChooser(); 
+    	
+    	//Ensures that only txt files can be selected
+    	FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+    	fileChoose.getExtensionFilters().add(filter);
+    	
     	File file = fileChoose.showOpenDialog(null);
     	HandleTextFiles handleTxtFile = new HandleTextFiles(file.getAbsolutePath());
 		textToBeAnalysed = handleTxtFile.fileToString();
 		paragraphCount = handleTxtFile.getParagraphCount();
-		StringBuilder filePath = new StringBuilder();
-		filePath.append(file.getAbsolutePath());				
-		if(!filePath.substring(file.getAbsolutePath().length()-4,file.getAbsolutePath().length()).equals(".txt"))
-		{
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("File type error");
-			errorAlert.setContentText("This application only accepts text files.\r\r"
-					                + "Please ensure you have selected a text file with the extension .txt");
-			errorAlert.showAndWait();
-		}
-		else {
-			importFileSuccessMessage.setVisible(true);
-		}
     }
-       
+    
     private void getUsersText()
     {
     	String localTextForAnalysis = textForAnalysis.getText();
@@ -467,6 +474,8 @@ public class GUI extends Application
     	{
 			importFileSuccessMessage.setVisible(false);
     		textToBeAnalysed = textForAnalysis.getText();
+    		
+    		//Sets paragraph count to 1 as the user enters text via a TextField so therefore won't be able to enter more than one paragraph.
     		paragraphCount = 1;
     	}
     }
@@ -484,6 +493,10 @@ public class GUI extends Application
     
     private boolean emptyTextError()
     {
+    	/*
+    	 * Code displays error message to the user if they haven't entered any text. 
+    	 * Method is called by the display analysis methods to prevent analysis being undertaken without any text present.
+    	 */
     	if(textToBeAnalysed.isEmpty())
     	{
 			Alert errorAlert = new Alert(AlertType.ERROR);
@@ -508,7 +521,7 @@ public class GUI extends Application
     }
     
 	@SuppressWarnings("unchecked")
-	public void displayCharacterAnalysis(ActionEvent event)
+	private void displayCharacterAnalysis(ActionEvent event)
     {
 		displayUsersText();
     	if(emptyTextError()) {}
@@ -554,6 +567,8 @@ public class GUI extends Application
             filteringOptionsBox.setDisable(filteringOptionsBoxDisable);
             sortAscButton.setDisable(sortAscDisable);
             sortDescButton.setDisable(sortDescDisable);
+            
+            //The below if statement ensures that the CharacterAnalysis class isn't run again if only a decimal place is being changed.
             if(decimalPlaceChange == false)
             {
             	charAnalysis = new CharacterAnalysis(charactersInScope, percentageCalculation, sortingOption);
@@ -561,11 +576,18 @@ public class GUI extends Application
         		charAnalysis.relativeCharFrequencies();
     			charAnalysis.summary();
             }
+            
     		characterAnalysisBarChartData = charAnalysis.barChartData();
     		characterAnalysisBarChart.setLegendVisible(false);
     		characterAnalysisBarChart.setVerticalGridLinesVisible(false);
     		characterAnalysisBarChart.getData().clear();
+    		
+    		/*
+    		 * This method call is important to re-set the layout of the bar chart to ensure that it doesn't remain 
+    		 * the same if the user selects the bar chart in either ASC or DESC order.
+    		 */
     		characterAnalysisBarChart.layout();
+    		
     		characterAnalysisBarChart.getData().addAll(characterAnalysisBarChartData);
     		characterAnalysisBarChart.setAnimated(false);
         	ObservableList<PieChart.Data> pieChartData = charAnalysis.pieChartData();
@@ -576,11 +598,11 @@ public class GUI extends Application
     	}
     }
 
-    public void displayWordAnalysis(ActionEvent event)
+    private void displayWordAnalysis(ActionEvent event)
     {
     	displayUsersText();
     	if(emptyTextError()){}
-    	else { 
+    	else {
 			characterPieChartHeader.setVisible(false);
 			characterAnalysisPieChart.setVisible(false);
 			displayCharacterBarChart.setVisible(false);
@@ -621,7 +643,7 @@ public class GUI extends Application
     	}
     }
     
-    public void displaySentimentAnalysis(ActionEvent event)
+    private void displaySentimentAnalysis(ActionEvent event)
     {
     	displayUsersText();
     	if(emptyTextError()) {}
@@ -659,6 +681,11 @@ public class GUI extends Application
         	}
         	ObservableList<PieChart.Data> pieChartData = langAnalysis.pieChartData();
         	sentimentAnalysisPieChart.setData(pieChartData);
+        	
+        	/*
+        	 * for loop sets the colour of the sentiment labels on the pie chart i.e. very positive = dark green, positive = green, 
+        	 * neutral = amber, negative = red, very negative = dark red.
+        	 */
         	for(PieChart.Data data : pieChartData)
         	{
         		if(data.getName().contains("Very negative"))
@@ -679,7 +706,7 @@ public class GUI extends Application
     	}
     }
     
-    public void displayPartsOfSpeechAnalysis(ActionEvent event)
+    private void displayPartsOfSpeechAnalysis(ActionEvent event)
     {
     	displayUsersText();
     	if(emptyTextError()) {}
@@ -710,7 +737,7 @@ public class GUI extends Application
             displaySortDecimalFilterPercentageRibbon(true);
         	if(decimalPlaceChange == false)
         	{
-            	langAnalysis = new LanguageAnalysis("tokenize, ssplit, pos, parse, sentiment", 2, sortingOption);
+            	langAnalysis = new LanguageAnalysis("tokenize, ssplit, pos", 2, sortingOption);
             	try {
                 	langAnalysis.partsOfSpeechAnalsis();
             	}
@@ -759,6 +786,8 @@ public class GUI extends Application
     	sortAscButton.setDisable(false);
     	sortDescButton.setDisable(false);
     	filteringOptionsBox.setDisable(false);
+    	
+    	//Disables percentage calculation drop down if 'All characters' are selected to be displayed.
     	try {
         	if(filteringOptionsBox.getValue().equals("All characters"))
         	{
@@ -824,6 +853,8 @@ public class GUI extends Application
     private void increaseDecimalPlaces(ActionEvent event)
     {
     	decimalPlaceChange = true;
+    	
+    	//Limits the number of places that can be shown to 10
     	if(numberOfDecimalPlaces >= 0 && numberOfDecimalPlaces < 10)
     	{
         	numberOfDecimalPlaces++;

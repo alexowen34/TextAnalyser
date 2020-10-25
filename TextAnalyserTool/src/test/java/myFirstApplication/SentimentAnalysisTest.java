@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import myFirstApplication.HandleTextFiles;
 import myFirstApplication.LanguageAnalysis;
 
@@ -36,7 +35,12 @@ public class SentimentAnalysisTest
 			int sortingOptionType, String expectedResult1, String expectedResult2, String expectedResult3, String expectedResult4,
 			String expectedResult5, int expectedResult6, String expectedResult7)
 	{
-		GUIInitializer.initializeToolkit();
+		/*
+		 * As the LanguageAnalysis class is instantiated in @Test methods, that class references the GUI class which uses JavaFX so 
+		 * therefore the JavaFX enviroment needs to be initialized.
+		 */
+		JavaFXInitializer.initializeToolkit();
+		
 		this.testSelector = testSelector;
 		this.fileLocation = fileLocation;
 		this.userInput = userInput;

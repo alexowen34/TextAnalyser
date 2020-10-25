@@ -4,7 +4,11 @@ import java.util.concurrent.CountDownLatch;
 import javax.swing.SwingUtilities;
 import javafx.embed.swing.JFXPanel;
 
-public class GUIInitializer
+/*
+ * As the some of the test classes instantiate other analysis classes that references the GUI class (the GUI class uses JavaFX) it requires 
+ * the JavaFX enviroment to be initialized (which is what the below code does).
+ */
+public class JavaFXInitializer
 {
     public static void initializeToolkit()
     {

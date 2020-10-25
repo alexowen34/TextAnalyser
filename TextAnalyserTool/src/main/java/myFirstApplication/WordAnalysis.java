@@ -13,8 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /*
- * This class does the word analysis. The class extends the abstract super class of StringToAnalyse which contains the text the user has inputted
- * to be analysed.
+ * This class does the word analysis. The class extends the abstract class of TextToBeAnalysed which contains the text the user has inputted
+ * to be analysed from the GUI class.
  */
 
 public class WordAnalysis extends TextToBeAnalysed
@@ -34,7 +34,7 @@ public class WordAnalysis extends TextToBeAnalysed
 	private SimpleStringProperty metric;
 	private SimpleStringProperty value;
 	
-	//Contructor method that is used by the TUI to pass in requried data to this object.
+	//Contructor method that is used by the GUI to pass in requried data to this object.
 	public WordAnalysis(String propertiesForNLP, int paragraphCount)
 	{
 		this.propertiesForNLP = propertiesForNLP;
@@ -228,6 +228,7 @@ public class WordAnalysis extends TextToBeAnalysed
 		return paragraphCount;
 	}
 	
+	//Used to create the ObservableList that stores the word analysis results for the table.
 	public ObservableList<WordAnalysis> wordAnalysisTableData()
 	{
 		String[] arrayOfMetrics = new String[5];

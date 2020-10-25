@@ -1,16 +1,13 @@
 package myFirstApplication;
 
 import static org.junit.Assert.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import myFirstApplication.CollectionToArray;
 
 @RunWith(value = Parameterized.class)

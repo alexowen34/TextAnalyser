@@ -1,23 +1,20 @@
 package myFirstApplication;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 /*
- * This class does the character analysis. The class extends the abstract super class of StringToAnalyse which contains the text the user has inputted
- * to be analysed.
+ * This class does the character analysis. The class extends the abstract class of StringToAnalyse which contains the text the user has inputted
+ * to be analysed from the GUI class.
  */
 public class CharacterAnalysis extends TextToBeAnalysed
 {
@@ -41,7 +38,7 @@ public class CharacterAnalysis extends TextToBeAnalysed
 	private String [] rowDescription = {"Letters", "Numbers", "Special Characters"};
 
 	
-	//Constructor method that is used by TUI to pass in required data to this object.
+	//Constructor method that is used by GUI class to pass in required data to this object.
 	public CharacterAnalysis (String referenceOption, int percentageCalcType, int sortingOptionType)
 	{
 		this.referenceOption = referenceOption;
@@ -130,7 +127,7 @@ public class CharacterAnalysis extends TextToBeAnalysed
 		
 	/*
 	 * Method returns either the percentage of how often the characters occur in just the filtered string (i.e. if user has selected to filter by
-	 * only letters, numbers or specical characters) or the full string entered. User has the option to select between these two calculations in TUI.
+	 * only letters, numbers or specical characters) or the full string entered. User has the option to select between these two calculations in GUI.
 	 * This method is dependant on countCharFrequencies method being ran first so that the relevent variables are populated.
 	 */
 	public double[] relativeCharFrequencies()
@@ -160,8 +157,9 @@ public class CharacterAnalysis extends TextToBeAnalysed
 	}
 	
 	/*
-	 * This method creates a summary by totaling the number of letters, numbers and special characters and returns a count, percentage and chart.
-	 * Method is only ran if 'Include all characters' is selected in TUI as this is the only option where a summary would be useful.
+	 * This method creates a summary by totaling the number of letters, numbers and special characters and returns a total count and percentage.
+	 * Results are only allowed to be displayed in GUI when 'Include all characters' is selected as this is the only filter option where the 
+	 * summary would be useful.
 	 */
 	public void summary()
 	{
@@ -185,19 +183,19 @@ public class CharacterAnalysis extends TextToBeAnalysed
 		this.summaryPercentage = percentageSummaryOutput;
 	}
 	
-	//This method returns the row values for the high level table. Method is used in this project only for testing purposes.
+	//This method returns the row values for the summary chart. Method is used in this project only for testing purposes.
 	public String[] getRowValues()
 	{
 		return rowDescription;
 	}
 	
-	//This method returns the count for the high level table. Method is used in this project only for testing purposes.
+	//This method returns the count for the summary chart. Method is used in this project only for testing purposes.
 	public int[] getCountSummaryOutput() 
 	{
 		return summaryCount;
 	}
 	
-	//This method returns the percentage for the high level table. Method is used in this project only for testing purposes.
+	//This method returns the percentage for the summary chart. Method is used in this project only for testing purposes.
 	public double[] getPercentageSummaryOutput()
 	{
 		return summaryPercentage;
@@ -215,6 +213,7 @@ public class CharacterAnalysis extends TextToBeAnalysed
 		return percentageSum = Arrays.stream(percentageFrequencyOutput).sum();
 	}
 	
+	//This method returns the bar chart data using the variables populated in this class.
 	public XYChart.Series<String, Number> barChartData()
 	{
 		String[] referenceCharactersForBarChart = new String[referenceCharactersForTable.length];
@@ -233,14 +232,15 @@ public class CharacterAnalysis extends TextToBeAnalysed
 		return barChart;
 	}
 	
-    private XYChart.Data<String, Number> createData(String country, int value, int counter) 
+	//This method gets called in the for loop in the barChartData method. This method returns the data with data labels for each bar.
+    private XYChart.Data<String, Number> createData(String text, int value, int counter) 
     {
-        XYChart.Data<String, Number> data =  new XYChart.Data<String, Number>(country, value);
+        XYChart.Data<String, Number> data =  new XYChart.Data<String, Number>(text, value);
 		DecimalPlaces stringRep = new DecimalPlaces();
 		DecimalFormat round = new DecimalFormat(stringRep.stringRepresentationOfDecimals());
-        String text = String.valueOf(round.format(percentageFrequencyOutput[counter])+"%");
+        String infomation = String.valueOf(round.format(percentageFrequencyOutput[counter])+"%");
         StackPane node = new StackPane();
-        Label label = new Label(text);
+        Label label = new Label(infomation);
         label.setStyle("-fx-font-weight: bold;");
         Group group = new Group(label);
         StackPane.setAlignment(group, Pos.CENTER);
@@ -250,37 +250,11 @@ public class CharacterAnalysis extends TextToBeAnalysed
         return data;
     }
     
+    //Returns the data for the summary pie chart.
 	public ObservableList<Data> pieChartData()
 	{
-		DecimalPlaces stringRep = new DecimalPlaces();
-		DecimalFormat round = new DecimalFormat(stringRep.stringRepresentationOfDecimals());
-		for(int i = 0; i < rowDescription.length; i++)
-		{
-			rowDescription[i] += " ("+String.valueOf(round.format(summaryPercentage[i]))+"%)";
-		}
-		ArrayList<PieChart.Data> data = new ArrayList<PieChart.Data>();
-		for(int i = 0; i < summaryCount.length; i++)
-		{
-			if(summaryCount[i] != 0)
-			{
-	            data.add(new PieChart.Data(rowDescription[i], summaryCount[i])); 
-			}
-		}
-		ObservableList<Data> list = FXCollections.observableArrayList();
-		list.addAll(data);
-		for(int i = 0; i < rowDescription.length; i++)
-		{
-			String length = "";
-			length = String.valueOf((int) summaryPercentage[i]);
-			int charsToRemove = GUI.numberOfDecimalPlaces + length.length() + 4;
-			StringBuilder removeDecimals = new StringBuilder(rowDescription[i]);
-			removeDecimals.reverse();
-			removeDecimals.delete(0, charsToRemove);
-			removeDecimals.reverse();
-			rowDescription[i] = removeDecimals.toString();
-			rowDescription[i] = rowDescription[i].trim();
-		}
-		return list;
+		CreatePieChartData populatePieChartData = new CreatePieChartData(rowDescription, summaryPercentage, summaryCount);
+		return populatePieChartData.pieChartData();
 	}
 }
 

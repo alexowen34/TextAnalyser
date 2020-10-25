@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Map.Entry;
 
 /*
- * This class sorts the results in DESC or ASC order depending on what the user has specified in the TUI menu. Both the CharacterAnalysis class and 
+ * This class sorts the results in DESC or ASC order depending on what the user has specified in the GUI. Both the CharacterAnalysis class and 
  * 'partsOfSpeechAnalsis' method within the LanguageAnalysis class use this object.
  */
 public class SortValues

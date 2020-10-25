@@ -1,5 +1,9 @@
 package myFirstApplication;
 
+/*
+ * This class is used to create a string representation of how many decimal places a number should be rounded to.
+ * It is used by CharacterAnalysis and CreatePieChartData classes.
+ */
 public class DecimalPlaces 
 {	
 	public String stringRepresentationOfDecimals()

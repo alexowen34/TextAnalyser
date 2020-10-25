@@ -1,4 +1,5 @@
 package myFirstApplication;
+
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.FileInputStream;

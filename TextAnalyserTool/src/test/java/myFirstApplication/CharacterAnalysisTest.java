@@ -1,7 +1,6 @@
 package myFirstApplication;
 
 import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,21 +10,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import myFirstApplication.CharacterAnalysis;
 import myFirstApplication.HandleTextFiles;
 
 @RunWith(value = Parameterized.class)
-public class CharacterAnalysisTest 
+public class CharacterAnalysisTest
 {
 	
-	protected static String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
-	protected static String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	protected static String numbers = "1234567890";
-	protected static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
+	//Variables stores the different types of reference characters which are used in each parameterized test.
+	private static String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
+	private static String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private static String numbers = "1234567890";
+	private static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
 	
-	
-	//Stores the required data, for the @Test method, that is populated by the constructor method.
+	//Variables stores the required data, for the @Test methods, that is populated by the constructor method.
 	private int testSelector;
 	private String fileLocation;
 	private String inputString;
@@ -48,7 +46,12 @@ public class CharacterAnalysisTest
 			String expectedResult3, String expectedResult4, String expectedResult5, String expectedResult6, String expectedResult7, 
 			String expectedResult8)
 	{
-		GUIInitializer.initializeToolkit();
+		/*
+		 * As the CharacterAnalysis class is instantiated in @Test methods, that class references the GUI class which uses JavaFX so 
+		 * therefore the JavaFX enviroment needs to be initialized.
+		 */
+		JavaFXInitializer.initializeToolkit();
+		
 		this.testSelector = testSelector;
 		this.fileLocation = fileLocation;
 		this.inputString = inputString;
