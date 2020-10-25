@@ -350,7 +350,6 @@ public class CharacterAnalysisTest
 			for(int i = 1; i <= percentageCalcType; i++)
 			{
 				CharacterAnalysis test1 = new CharacterAnalysis(inputString, referenceOption, i, sortingOptionType, decimalPlaces);
-				System.out.println(inputString + " " + referenceOption + " " + percentageCalcType  + " " + sortingOptionType  + " " + decimalPlaces);
 				int[] intPlaceholder = test1.countCharFrequencies();
 				char[] charPlaceholder = test1.getReferenceCharacters();
 				double[] doublePlaceholder = test1.relativeCharFrequencies();
