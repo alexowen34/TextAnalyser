@@ -325,7 +325,7 @@ public class CharacterAnalysisTest
 				"34", "100.00", "", ""},
 			
 			//Test case #28
-			{2,"TestData/CharacterAnalysisTestFiles/CharacterAnalysis-TestCase28.txt", "", fullListOfReferenceCharacters, 0, 1, 1,
+			{2,"TestData&Documentation/CharacterAnalysisTestFiles/CharacterAnalysis-TestCase28.txt", "", fullListOfReferenceCharacters, 0, 1, 1,
 				"[Letters, Numbers, Special Characters]",
 				"[16, 11, 7]",
 				"[47.06, 32.35, 20.59]",

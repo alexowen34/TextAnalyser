@@ -86,15 +86,15 @@ public class WordAnalysisTest
 			 "Text does not contain a distinct most frequent word", 1, 2},
 			
 			//Test case #7
-			{2, "TestData/WordAnalysisTestFiles/WordAnalysis-TestCase6.txt", "", "tokenize, ssplit", 0, 23, "4.13",
+			{2, "TestData&Documentation/WordAnalysisTestFiles/WordAnalysis-TestCase6.txt", "", "tokenize, ssplit", 0, 23, "4.13",
 			 "i", 3, 3},
 			 
 			//Test case #8
-			{2, "TestData/WordAnalysisTestFiles/WordAnalysis-TestCase7.txt", "", "tokenize, ssplit", 0, 12, "3.83",
+			{2, "TestData&Documentation/WordAnalysisTestFiles/WordAnalysis-TestCase7.txt", "", "tokenize, ssplit", 0, 12, "3.83",
 			 "is", 1, 1},
 			
 			//Test case #9
-			{2, "TestData/WordAnalysisTestFiles/WordAnalysis-TestCase8.txt", "", "tokenize, ssplit", 0, 128, "4.53",
+			{2, "TestData&Documentation/WordAnalysisTestFiles/WordAnalysis-TestCase8.txt", "", "tokenize, ssplit", 0, 128, "4.53",
 			 "the", 3, 6},
 			
 			//Test case #10
