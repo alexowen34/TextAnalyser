@@ -77,7 +77,7 @@ public class GUI extends Application
 	private static TableView<LanguageAnalysis> partsOfSpeechAnalysisTable = new TableView<LanguageAnalysis>();
 	private static TableColumn<LanguageAnalysis, String> word = new TableColumn<LanguageAnalysis, String>(), POStag = new TableColumn<LanguageAnalysis, String>();
 	private ToggleButton darkModeActivate = new ToggleButton();
-    private String darkModeCSS = getClass().getResource("DarkMode.css").toExternalForm();
+    private String darkModeFilePathCSS = "file:Styling&Layout/DarkMode.css";
     private static boolean darkModeActivated;
     private AnchorPane root = new AnchorPane();
     
@@ -393,7 +393,7 @@ public class GUI extends Application
                 if(scene.getStylesheets().isEmpty()) 
                 {
                 	darkModeActivated = true;
-                	scene.getStylesheets().add(darkModeCSS);
+                	scene.getStylesheets().add(darkModeFilePathCSS);
                 	darkModeActivate.setText("White Mode");
                 	inputBackgroundBox.setStyle("-fx-fill: #283149");
                     analysisBackgroundBox.setStyle("-fx-fill: #283149");
@@ -403,7 +403,7 @@ public class GUI extends Application
                 }
                 else {
                     darkModeActivated = false;
-                    scene.getStylesheets().remove(darkModeCSS);
+                    scene.getStylesheets().remove(darkModeFilePathCSS);
                 	darkModeActivate.setText("Dark Mode");
                     inputBackgroundBox.setStyle("-fx-fill: #eaeaea");
                     analysisBackgroundBox.setStyle("-fx-fill: #eaeaea");
@@ -991,7 +991,7 @@ public class GUI extends Application
 		Scene scene = new Scene(vbox, 0, 0);
 		if(darkModeActivated)
 		{
-			scene.getStylesheets().add(darkModeCSS);
+			scene.getStylesheets().add(darkModeFilePathCSS);
 		}
 		stage.setTitle("Bar Chart");
 		stage.setScene(scene);
