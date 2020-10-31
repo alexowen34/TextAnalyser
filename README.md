@@ -11,7 +11,7 @@ The application focuses heavily on string manipulation and natural language proc
 
 Parts of this application use StanfordCoreNLP (a machine learning library developed by the University of Stanford). This is one reason why Maven is used to bring this dependency into the project.
 
-The application also uses a GUI which has been developed using JavaFX.
+The application also uses a GUI which I have developed using JavaFX.
 
 Over 140 unit tests have been written for this application to test the accuracy of its core algorithms.
 
