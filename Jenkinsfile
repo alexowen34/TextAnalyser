@@ -5,6 +5,7 @@ pipeline {
       steps {
         bat 'echo "Hello World"'
         bat 'echo "Testing Jenkinsfile"'
+        bat 'echo "Testing Webhook created in Jenkins"'
       }
     }
   }
