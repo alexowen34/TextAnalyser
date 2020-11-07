@@ -4,14 +4,12 @@
 
 package com.myfirstapplication;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 import com.myfirstapplication.analysis.CharacterAnalysis;
 import com.myfirstapplication.analysis.LanguageAnalysis;
 import com.myfirstapplication.analysis.WordAnalysis;
 import com.myfirstapplication.support.HandleTextFiles;
-
+import java.io.File;
+import java.io.FileNotFoundException;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,10 +42,10 @@ import javafx.stage.Stage;
 
 public class GUI extends Application
 {
-	public static String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
-	public static String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static String numbers = "1234567890";
-	public static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
+	public static final String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
+	public static final String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final String numbers = "1234567890";
+	public static final String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
 	protected static String charactersInScope = fullListOfReferenceCharacters;
 	public static String textToBeAnalysed = "";
 	private static LanguageAnalysis langAnalysis;
