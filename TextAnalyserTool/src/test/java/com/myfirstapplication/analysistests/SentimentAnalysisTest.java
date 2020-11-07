@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.analysistests;
 
 import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
@@ -10,8 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import myFirstApplication.HandleTextFiles;
-import myFirstApplication.LanguageAnalysis;
+
+import com.myfirstapplication.analysis.LanguageAnalysis;
+import com.myfirstapplication.support.HandleTextFiles;
 
 @RunWith(value = Parameterized.class)
 public class SentimentAnalysisTest 

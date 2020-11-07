@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.support;
 
 import java.util.Properties;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;

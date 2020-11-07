@@ -1,11 +1,15 @@
-package myFirstApplication;
+package com.myfirstapplication.analysis;
 
+import com.myfirstapplication.support.CollectionToArray;
+import com.myfirstapplication.support.CreatePieChartData;
+import com.myfirstapplication.support.HandleTextFiles;
+import com.myfirstapplication.support.NLPpipeline;
+import com.myfirstapplication.support.SortValues;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;

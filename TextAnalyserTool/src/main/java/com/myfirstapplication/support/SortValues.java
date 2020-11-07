@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.support;
 
 import java.util.Collections;
 import java.util.Comparator;

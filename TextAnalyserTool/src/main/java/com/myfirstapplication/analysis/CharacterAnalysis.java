@@ -1,9 +1,14 @@
-package myFirstApplication;
+package com.myfirstapplication.analysis;
 
+import com.myfirstapplication.GUI;
+import com.myfirstapplication.support.CollectionToArray;
+import com.myfirstapplication.support.CreatePieChartData;
+import com.myfirstapplication.support.DecimalPlaces;
+import com.myfirstapplication.support.SortValues;
+import javafx.collections.ObservableList;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;

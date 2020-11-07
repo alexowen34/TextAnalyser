@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.supporttests;
 
 import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import myFirstApplication.HandleTextFiles;
+import com.myfirstapplication.support.HandleTextFiles;
 
 @RunWith(value = Parameterized.class)
 public class HandleTextFilesTest
@@ -100,7 +100,7 @@ public class HandleTextFilesTest
 	 * result will be a failure or error.
 	 */
 	@Test
-	public void testBarChart() throws FileNotFoundException
+	public void testHandleTextFiles() throws FileNotFoundException
 	{
 		HandleTextFiles test1 = new HandleTextFiles(fileLocation);
 		String result1 = null;

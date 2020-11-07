@@ -6,10 +6,16 @@
 //test
 //test
 
-package myFirstApplication;
+package com.myfirstapplication;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+
+import com.myfirstapplication.analysis.CharacterAnalysis;
+import com.myfirstapplication.analysis.LanguageAnalysis;
+import com.myfirstapplication.analysis.WordAnalysis;
+import com.myfirstapplication.support.HandleTextFiles;
+
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,12 +48,12 @@ import javafx.stage.Stage;
 
 public class GUI extends Application
 {
-	protected static String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
-	protected static String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	protected static String numbers = "1234567890";
-	protected static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
+	public static String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
+	public static String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static String numbers = "1234567890";
+	public static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
 	protected static String charactersInScope = fullListOfReferenceCharacters;
-	protected static String textToBeAnalysed = "";
+	public static String textToBeAnalysed = "";
 	private static LanguageAnalysis langAnalysis;
 	private static CharacterAnalysis charAnalysis;
 	private boolean decimalPlaceChange;

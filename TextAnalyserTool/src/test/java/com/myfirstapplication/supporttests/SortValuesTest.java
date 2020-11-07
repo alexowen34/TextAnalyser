@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.supporttests;
 
 import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import myFirstApplication.SortValues;
+import com.myfirstapplication.support.SortValues;
 
 @RunWith(value = Parameterized.class)
 public class SortValuesTest

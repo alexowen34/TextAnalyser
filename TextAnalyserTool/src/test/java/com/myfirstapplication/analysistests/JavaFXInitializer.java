@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.analysistests;
 
 import java.util.concurrent.CountDownLatch;
 import javax.swing.SwingUtilities;

@@ -1,7 +1,10 @@
-package myFirstApplication;
+package com.myfirstapplication.support;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import com.myfirstapplication.GUI;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;

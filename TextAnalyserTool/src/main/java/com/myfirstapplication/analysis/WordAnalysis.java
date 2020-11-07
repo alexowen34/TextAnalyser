@@ -1,5 +1,8 @@
-package myFirstApplication;
+package com.myfirstapplication.analysis;
 
+import com.myfirstapplication.GUI;
+import com.myfirstapplication.support.CollectionToArray;
+import com.myfirstapplication.support.NLPpipeline;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;

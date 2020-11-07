@@ -1,7 +1,15 @@
-package myFirstApplication;
+package com.myfirstapplication.tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import com.myfirstapplication.analysistests.CharacterAnalysisTest;
+import com.myfirstapplication.analysistests.PartsOfSpeechAnalysisTest;
+import com.myfirstapplication.analysistests.SentimentAnalysisTest;
+import com.myfirstapplication.analysistests.WordAnalysisTest;
+import com.myfirstapplication.supporttests.CollectionToArrayTest;
+import com.myfirstapplication.supporttests.HandleTextFilesTest;
+import com.myfirstapplication.supporttests.SortValuesTest;
 
 /*
  * This class is the main test class which calls each of the individual test classes for the application.

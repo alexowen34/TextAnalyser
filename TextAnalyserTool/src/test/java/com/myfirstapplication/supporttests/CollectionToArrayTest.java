@@ -1,4 +1,4 @@
-package myFirstApplication;
+package com.myfirstapplication.supporttests;
 
 import static org.junit.Assert.*;
 import java.util.Arrays;
@@ -8,7 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import myFirstApplication.CollectionToArray;
+
+import com.myfirstapplication.support.CollectionToArray;
 
 @RunWith(value = Parameterized.class)
 public class CollectionToArrayTest 

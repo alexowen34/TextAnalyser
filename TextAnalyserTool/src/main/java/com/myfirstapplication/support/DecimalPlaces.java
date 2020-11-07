@@ -1,4 +1,6 @@
-package myFirstApplication;
+package com.myfirstapplication.support;
+
+import com.myfirstapplication.GUI;
 
 /*
  * This class is used to create a string representation of how many decimal places a number should be rounded to.
