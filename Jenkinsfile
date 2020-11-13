@@ -7,12 +7,19 @@ pipeline {
         checkout scm
       }
     }
-    /*
     stage('Build') {
       steps {
-        bat 'mvn clean compile'
+        withMaven(maven : 'M3') {
+          bat 'mvn clean compile'
+        }
       }
     }
-    */
+    stage('Build') {
+      steps {
+        withMaven(maven : 'M3') {
+          bat 'mvn test'
+        }
+      }
+    }
   }
 }
