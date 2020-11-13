@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         container('maven') {
-          sh """
+          bat """
             mvn -s project-settings.xml -B -Djavax.net.ssl.trustStore=cacerts clean compile -U -Dmaven.test.skip=true
           """
         }
