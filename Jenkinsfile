@@ -8,10 +8,10 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        bat 'echo "Hello World"'
-        bat 'echo "Testing Jenkinsfile"'
-        bat 'echo "Testing Webhook created in Jenkins"'
+      container('maven') {
+        sh """
+          mvn -s project-settings.xml -B -Djavax.net.ssl.trustStore=cacerts clean compile -U -Dmaven.test.skip=true
+        """
       }
     }
   }
