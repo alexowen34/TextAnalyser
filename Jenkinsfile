@@ -8,10 +8,12 @@ pipeline {
       }
     }
     stage('Build') {
-      container('maven') {
-        sh """
-          mvn -s project-settings.xml -B -Djavax.net.ssl.trustStore=cacerts clean compile -U -Dmaven.test.skip=true
-        """
+      steps {
+        container('maven') {
+          sh """
+            mvn -s project-settings.xml -B -Djavax.net.ssl.trustStore=cacerts clean compile -U -Dmaven.test.skip=true
+          """
+        }
       }
     }
   }
