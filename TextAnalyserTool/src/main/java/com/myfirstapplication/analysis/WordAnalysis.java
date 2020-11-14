@@ -89,7 +89,8 @@ public class WordAnalysis extends TextToBeAnalysed
 	{
 		String[] arrayForValidWords = textToBeAnalysed.trim().split("\\s+");
 		String test = "".concat(GUI.specialCharacters).concat(GUI.numbers);
-		String charactersToRemove = test;
+		String charactersToRemove = "";
+		charactersToRemove = charactersToRemove += test;
 		char[] charsToRemove = charactersToRemove.toCharArray();
 		String[] charsToRemoveString = new String[charsToRemove.length];
 		for(int i = 0; i < charsToRemoveString.length; i++)
