@@ -2,16 +2,16 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Build / Compile') {
       steps {
         withMaven(maven : 'M3') {
           dir("TextAnalyserTool") {
-            //bat 'mvn clean compile'
+            bat 'mvn clean compile'
           }
         }
       }
     }
-    stage('Test') {
+    stage('JUnit Tests') {
       steps {
         withMaven(maven : 'M3') {
           dir("TextAnalyserTool") {
