@@ -5,7 +5,7 @@ pipeline {
     stage('Build') {
       steps {
         withMaven(maven : 'M3') {
-          dir("C:\Users\alexj\AppData\Local\Jenkins.jenkins\workspace\alyser-Scan-Build-Trigger_master\TextAnalyserTool")
+          dir("TextAnalyserTool")
           {
             bat 'mvn clean compile'
           }
