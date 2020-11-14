@@ -6,7 +6,7 @@ pipeline {
       steps {
         withMaven(maven : 'M3') {
           dir("TextAnalyserTool") {
-            bat 'mvn clean compile'
+            //bat 'mvn clean compile'
           }
         }
       }
