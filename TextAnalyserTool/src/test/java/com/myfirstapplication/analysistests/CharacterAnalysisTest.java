@@ -343,7 +343,7 @@ public class CharacterAnalysisTest
 	 * the result will be a pass, if they do not match then the result will be a failure or error.
 	 */
 	@Test
-	public void testResultsForLowLevelTable()
+	public void testResultsForLowLevelDetail()
 	{
 		if(testSelector == 1)
 		{
@@ -396,7 +396,7 @@ public class CharacterAnalysisTest
 	}
 	
 	@Test
-	public void testResultsForHighLevelTable() throws FileNotFoundException
+	public void testResultsForHighLevelDetail() throws FileNotFoundException
 	{
 		if(testSelector == 2)
 		{
