@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.textanalyser</groupId>
   <artifactId>maven-project</artifactId>
-  <version>1.0.0</version>
+  <version>0.0.1-SNAPSHOT</version>
   <dependencies>
 	  <dependency>
 	  	<groupId>edu.stanford.nlp</groupId>
