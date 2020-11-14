@@ -63,7 +63,7 @@ public class CollectionToArrayTest
 			{2,"A, A, A, B, B, C, D, E, E, F, G",
 			 "Hello, Hello, World, How, Are, Are, You, Hello, Hello, World, Today",
 			 "[A, B, C, D, E, F, G]",
-			 "[World, Are, Are, You, Hello, World, Today]"}
+			 "[World, Are, Aue, You, Hello, World, Today]"}
 			 
 		});
 	}
