@@ -49,7 +49,7 @@ public class GUI extends Application
 	protected static String charactersInScope = fullListOfReferenceCharacters;
 	public static String textToBeAnalysed = "";
 	private static LanguageAnalysis langAnalysis;
-	private static CharacterAnalysis charAnalysis
+	private static CharacterAnalysis charAnalysis;
 	private boolean decimalPlaceChange;
 	private boolean charAnalysisPieChartVisible;
 	private boolean percentageOptionsBoxDisable = true;
