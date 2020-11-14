@@ -88,8 +88,7 @@ public class WordAnalysis extends TextToBeAnalysed
 	public int wordCount()
 	{
 		String[] arrayForValidWords = textToBeAnalysed.trim().split("\\s+");
-		String charactersToRemove = GUI.specialCharacters += GUI.numbers;
-		System.out.println(charactersToRemove);
+		String charactersToRemove = "".concat(GUI.specialCharacters).concat(GUI.numbers);
 		char[] charsToRemove = charactersToRemove.toCharArray();
 		String[] charsToRemoveString = new String[charsToRemove.length];
 		for(int i = 0; i < charsToRemoveString.length; i++)

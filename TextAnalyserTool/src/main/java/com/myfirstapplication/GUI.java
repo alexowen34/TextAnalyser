@@ -44,8 +44,8 @@ public class GUI extends Application
 {
 	public static final String fullListOfReferenceCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\1234567890";
 	public static final String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static  String numbers = "1234567890";
-	public static String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
+	public static final String numbers = "1234567890";
+	public static final String specialCharacters = "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>.?/|\"\\";
 	protected static String charactersInScope = fullListOfReferenceCharacters;
 	public static String textToBeAnalysed = "";
 	private static LanguageAnalysis langAnalysis;
