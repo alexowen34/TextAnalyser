@@ -99,6 +99,14 @@ public class WordAnalysisTest
 			//Test case #9
 			{2, "TestData&Documentation/WordAnalysisTestFiles/WordAnalysis-TestCase8.txt", "", "tokenize, ssplit", 0, 128, "4.53",
 			 "the", 3, 6},
+			
+			//Test case #10
+			{1, "", "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>", "tokenize, ssplit", 0, 0, "0.00",
+			 "Text does not include any valid words", 0, 0},
+
+			//Test case #12
+			{1, "", "`¬¦!£$%^&*()_-+={[}]~#:;@'<,>", "tokenize, ssplit", 0, 0, "0.00",
+			 "Text does not include any valid words", 0, 0},
 
 			//Test case #10
 			{1, "", "1234567890", "tokenize, ssplit", 0, 0, "0.00",
