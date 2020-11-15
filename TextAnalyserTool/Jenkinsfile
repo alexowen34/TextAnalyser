@@ -1,10 +1,21 @@
-//Test pipeline file - doesn't actually do anything useful for now.
+/*
+ * The project master branch is automatically checked out from GitHub repo into the Jenkins workspace.
+ * This pipeline script checks there is no compilation errors across the project and then runs JUnit tests.
+ * Several Jenkins plugins are required to run this such as:
+ * 	- All default suggested plugins
+ *  - Maven Integration plugin
+ *  - Pipeline Maven Integration Plugin
+ *  - JUnit Attachments Plugin
+ * Also, Jenkins should be using Java 8 (JDK 8) in it's global and system configuration.
+*/
+
 pipeline {
   agent any
   stages {
     stage('Build / Compile') {
       steps {
         withMaven(maven : 'M3') {
+          //Goes into the TextAnalyserTool folder as this is where POM.xml is stored.
           dir("TextAnalyserTool") {
             bat 'mvn clean compile'
           }
