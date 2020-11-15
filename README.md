@@ -1,5 +1,7 @@
 # TextAnalyser
 
+*If cloning into an IDE, please ensure Java 8 (JDK 8) and JavaFX for Java 8 is installed.*
+
 The Text Analyser project is the first application that I have ever created. I built this for a 1st-year university project.
 
 The application focuses heavily on string manipulation and natural language processing to display a range of information on text the user provides. This includes:
