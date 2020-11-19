@@ -15,7 +15,7 @@ Parts of this application use StanfordCoreNLP (a machine learning library develo
 
 The application also uses a GUI which I have developed using JavaFX.
 
-I have written 100+ unit tests for this application to test the accuracy of its core algorithms.
+I have written 100+ JUnit tests for this application to test the accuracy of its core algorithms.
 
 ---------------------------------------------------------------
 
