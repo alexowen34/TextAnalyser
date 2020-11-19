@@ -21,4 +21,4 @@ I have written 100+ JUnit tests for this application to test the accuracy of its
 
 Known improvements required:
 
-- Code refactoring. The class which builds and handles the logic of the GUI (GUI.java) calls many visibility and disable methods on most GUI components (i.e. buttons, text boxes, labels etc.). This results in the class containing almost 1,000 lines of code. This could be refactored to make the code more maintainable.
+- Code refactoring. The class which builds and handles the logic of the GUI (GUI.java) calls many visibility and disable methods on most GUI components (i.e. buttons, text boxes, labels etc.). This results in the GUI.java class containing around 1,000 lines of code. This could be refactored to make the code more maintainable.
