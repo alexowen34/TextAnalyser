@@ -15,7 +15,7 @@ pipeline {
   stages {
     stage('Build / Compile') {
       steps {
-        withMaven(maven : 'M3') {
+        withMaven(maven : 'Maven3') {
           //Goes into the TextAnalyserTool folder as this is where POM.xml is stored.
           dir("TextAnalyserTool") {
             bat 'mvn clean compile'
@@ -25,7 +25,7 @@ pipeline {
     }
     stage('JUnit Tests') {
       steps {
-        withMaven(maven : 'M3') {
+        withMaven(maven : 'Maven3') {
           dir("TextAnalyserTool") {
             bat 'mvn test'
           }
