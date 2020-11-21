@@ -85,11 +85,6 @@ public class GUI extends Application
     private static boolean darkModeActivated;
     private AnchorPane root = new AnchorPane();
     
-    public static void main(String[] args)
-    {
-        launch();
-    }
-    
     private void setupTopButtons()
     {
     	displayCharacterAnalysis.setLayoutX(36);
