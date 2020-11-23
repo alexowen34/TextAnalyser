@@ -421,7 +421,6 @@ public class GUI extends Application
         primaryStage.setMaxWidth(743+18);
         primaryStage.setMinHeight(905+48);
         primaryStage.setMinWidth(743+18);
-        
         primaryStage.show();
     }
     
@@ -999,6 +998,3 @@ public class GUI extends Application
 	}
 	
 }
-
-
-
