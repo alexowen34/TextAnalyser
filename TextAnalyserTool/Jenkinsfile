@@ -36,7 +36,7 @@ pipeline {
       steps {
         withSonarQubeEnv('SonarQubeServer') {
           dir("TextAnalyserTool") {
-            bat 'mvn sonar:sonar'
+            bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.3:sonar'
           }
 		}
 	  }
