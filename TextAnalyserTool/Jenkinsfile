@@ -33,13 +33,10 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
-      environment {
-        SCANNER_HOME = tool 'Sonar-Scanner'
-      }
       steps {
         withSonarQubeEnv('SonarQubeServer') {
           dir("TextAnalyserTool") {
-            bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.3:sonar'
+            bat 'mvn sonar:sonar'
           }
 		}
 	  }
