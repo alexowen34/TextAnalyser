@@ -32,5 +32,17 @@ pipeline {
         }
       }
     }
+    stage('SonarQube Analysis1') {
+	  steps {
+	    dir("C:\Users\alexj\sonarqube-7.9.5\sonarqube-7.9.5\bin\windows-x86-64") {
+	      bat 'StartSonar.bat'
+	    }
+        withMaven(maven : 'Maven3') {
+          dir("TextAnalyserTool") {
+            bat 'mvn sonar:sonar'
+          }
+        }
+      }
+    }
   }
 }
