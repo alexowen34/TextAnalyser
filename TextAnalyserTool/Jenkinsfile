@@ -34,9 +34,10 @@ pipeline {
     }
     stage('SonarQube Analysis') {
       steps {
-        def scannerhome = tool 'Sonar-Scanner';
         withSonarQubeEnv('SonarQubeServer') {
-          bat '${scannerhome}/bin/sonar-runner'
+          dir("TextAnalyserTool") {
+            bat 'mvn sonar:sonar'
+          }
 		}
 	  }
     }
