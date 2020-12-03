@@ -4,7 +4,7 @@
 
 Text Analyser is the first application that I have ever created. I built this for a 1st-year university project.
 
-The application focuses heavily on string manipulation and natural language processing to display a range of information on text the user provides. This includes:
+The application focuses heavily on string manipulation and natural language processing to display a range of information based on text that the user provides. This includes:
 
 - Parts of Speech Analysis
 - Sentiment Analysis
