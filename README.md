@@ -1,6 +1,8 @@
 # TextAnalyser
 
-The Text Analyser project *(Java 11 Maven Project)* is the first application that I have ever created. I built this for a 1st-year university project.
+*(Java 11 Maven Project)*
+
+The Text Analyser project is the first application that I have ever created. I built this for a 1st-year university project.
 
 The application focuses heavily on string manipulation and natural language processing to display a range of information on text the user provides. This includes:
 
