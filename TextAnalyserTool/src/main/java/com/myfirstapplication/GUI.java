@@ -84,8 +84,8 @@ public class GUI extends Application
 	private ToggleButton darkModeActivate = new ToggleButton();
     private String darkModeFilePathCSS = "file:Styling&Layout/DarkMode.css";
     private static boolean darkModeActivated;
-    private static final String button_Chart_Table_ComboBox_Other_FontSize = "15px";
-    private static final String labelFontSize = "16px";
+    private static final String button_Chart_Table_ComboBox_Other_FontSize = "-fx-font-size: 15px";
+    private static final String labelFontSize = "-fx-font-size: 17px";
     private AnchorPane root = new AnchorPane();
     
     private void setupTopButtons()
@@ -93,7 +93,7 @@ public class GUI extends Application
     	//Set font size in all top buttons to the specified global variable font size
     	for(int i = 0; i < arrayOfTopButtons.length; i++)
     	{
-    		arrayOfTopButtons[i].setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+    		arrayOfTopButtons[i].setStyle(button_Chart_Table_ComboBox_Other_FontSize);
     	}
     	
     	displayCharacterAnalysis.setLayoutX(36);
@@ -137,7 +137,7 @@ public class GUI extends Application
     	{
     		arrayOfBottomButtons[i].setPrefHeight(prefHeight);
     		arrayOfBottomButtons[i].setPrefWidth(prefWidth);
-    		arrayOfBottomButtons[i].setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+    		arrayOfBottomButtons[i].setStyle(button_Chart_Table_ComboBox_Other_FontSize);
     	}
     	
         sortAscButton.setLayoutX(247);
@@ -213,11 +213,11 @@ public class GUI extends Application
     	or.setText("OR");
 
     	displayInputMethodHeader.setLayoutX(36); displayInputMethodHeader.setLayoutY(100);
-    	displayInputMethodHeader.setStyle("-fx-font-size: "+labelFontSize);
+    	displayInputMethodHeader.setStyle(labelFontSize);
     	displayInputMethodHeader.setText("Please select your text import method:");
 
     	displayAnalysisTypeHeader.setLayoutX(36); displayAnalysisTypeHeader.setLayoutY(297);
-    	displayAnalysisTypeHeader.setStyle("-fx-font-size: "+labelFontSize);
+    	displayAnalysisTypeHeader.setStyle(labelFontSize);
     	displayAnalysisTypeHeader.setText("Please select the type of analysis you would like to perform:");
 
         importFileSuccessMessage.setLayoutX(167); importFileSuccessMessage.setLayoutY(148);
@@ -225,52 +225,53 @@ public class GUI extends Application
         importFileSuccessMessage.setText("Your text has been imported successfully!");
         
         displayTextHeader.setLayoutX(36); displayTextHeader.setLayoutY(422);
-        displayTextHeader.setStyle("-fx-font-size: "+labelFontSize);
+        displayTextHeader.setStyle(labelFontSize);
         displayTextHeader.setText("Here is your text:");
         
         characterBarChartHeader.setLayoutX(36); characterBarChartHeader.setLayoutY(589);
         characterBarChartHeader.setPrefHeight(21); characterBarChartHeader.setPrefWidth(673);
-        characterBarChartHeader.setStyle("-fx-font-size: "+labelFontSize+"; -fx-font-weight: bold");
+        characterBarChartHeader.setStyle(labelFontSize+"; -fx-font-weight: bold");
         characterBarChartHeader.setAlignment(Pos.CENTER);
         characterBarChartHeader.setText("Number of Individual Characters");
         
         sentimentResultsHeader.setLayoutX(36); sentimentResultsHeader.setLayoutY(589);
         sentimentResultsHeader.setPrefHeight(21); sentimentResultsHeader.setPrefWidth(673);
-        sentimentResultsHeader.setStyle("-fx-font-size: "+labelFontSize+"; -fx-font-weight: bold");
+        sentimentResultsHeader.setStyle(labelFontSize+"; -fx-font-weight: bold");
         sentimentResultsHeader.setAlignment(Pos.CENTER);
         sentimentResultsHeader.setText("Sentiment Analysis Per Sentence");
         
         wordAnalysisResultsHeader.setLayoutX(36); wordAnalysisResultsHeader.setLayoutY(589);
         wordAnalysisResultsHeader.setPrefHeight(21); wordAnalysisResultsHeader.setPrefWidth(673);
-        wordAnalysisResultsHeader.setStyle("-fx-font-size: "+labelFontSize+"; -fx-font-weight: bold");
+        wordAnalysisResultsHeader.setStyle(labelFontSize+"; -fx-font-weight: bold");
         wordAnalysisResultsHeader.setAlignment(Pos.CENTER);
         wordAnalysisResultsHeader.setText("Word Analysis Results");
         
         partsOfSpeechAnalysisResultsHeader.setLayoutX(36); partsOfSpeechAnalysisResultsHeader.setLayoutY(589);
         partsOfSpeechAnalysisResultsHeader.setPrefHeight(21); partsOfSpeechAnalysisResultsHeader.setPrefWidth(673);
-        partsOfSpeechAnalysisResultsHeader.setStyle("-fx-font-size: "+labelFontSize+"; -fx-font-weight: bold");
+        partsOfSpeechAnalysisResultsHeader.setStyle(labelFontSize+"; -fx-font-weight: bold");
         partsOfSpeechAnalysisResultsHeader.setAlignment(Pos.CENTER);
         partsOfSpeechAnalysisResultsHeader.setText("Parts Of Speech Analysis Results");
         
         characterPieChartHeader.setLayoutX(36); characterPieChartHeader.setLayoutY(589);
         characterPieChartHeader.setPrefHeight(21); characterPieChartHeader.setPrefWidth(673);
-        characterPieChartHeader.setStyle("-fx-font-size: "+labelFontSize+"; -fx-font-weight: bold");
+        characterPieChartHeader.setStyle(labelFontSize+"; -fx-font-weight: bold");
         characterPieChartHeader.setAlignment(Pos.CENTER);
         characterPieChartHeader.setText("Summary of Character Types");
     }
+    
     private void setupCharts()
     {
     	characterAnalysisPieChart.setLayoutX(36); characterAnalysisPieChart.setLayoutY(617);
         characterAnalysisPieChart.setPrefHeight(278); characterAnalysisPieChart.setPrefWidth(673);
-        characterAnalysisPieChart.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        characterAnalysisPieChart.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         
         characterAnalysisBarChart.setLayoutX(18); characterAnalysisBarChart.setLayoutY(616);
         characterAnalysisBarChart.setPrefHeight(286); characterAnalysisBarChart.setPrefWidth(701);
-        characterAnalysisBarChart.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        characterAnalysisBarChart.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         
         sentimentAnalysisPieChart.setLayoutX(36); sentimentAnalysisPieChart.setLayoutY(617);
         sentimentAnalysisPieChart.setPrefHeight(278); sentimentAnalysisPieChart.setPrefWidth(673);
-        sentimentAnalysisPieChart.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        sentimentAnalysisPieChart.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
     }
     
     @SuppressWarnings("unchecked")
@@ -278,21 +279,21 @@ public class GUI extends Application
     {
     	sentimentAnalysisTable.setLayoutX(36); sentimentAnalysisTable.setLayoutY(631);
         sentimentAnalysisTable.setPrefHeight(250); sentimentAnalysisTable.setPrefWidth(673);
-        sentimentAnalysisTable.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        sentimentAnalysisTable.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         sentiment.setPrefWidth(118); sentence.setPrefWidth(554);
         sentiment.setText("Senitment"); sentence.setText("Sentence");
         sentimentAnalysisTable.getColumns().addAll(sentiment, sentence);
         
         wordAnalysisTable.setLayoutX(36); wordAnalysisTable.setLayoutY(631);
         wordAnalysisTable.setPrefHeight(250); wordAnalysisTable.setPrefWidth(673);
-        wordAnalysisTable.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        wordAnalysisTable.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         metric.setPrefWidth(179); value.setPrefWidth(493);
         metric.setText("Metric"); value.setText("Value");
         wordAnalysisTable.getColumns().addAll(metric, value);
         
         partsOfSpeechAnalysisTable.setLayoutX(36); partsOfSpeechAnalysisTable.setLayoutY(631);
         partsOfSpeechAnalysisTable.setPrefHeight(250); partsOfSpeechAnalysisTable.setPrefWidth(673);
-        partsOfSpeechAnalysisTable.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        partsOfSpeechAnalysisTable.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         POStag.setPrefWidth(179); word.setPrefWidth(493);
         POStag.setText("Parts of Speech"); word.setText("Word");
         partsOfSpeechAnalysisTable.getColumns().addAll(POStag, word);
@@ -304,14 +305,14 @@ public class GUI extends Application
         filteringOptionsBox.setPrefHeight(31); filteringOptionsBox.setPrefWidth(163);
         filteringOptionsBox.setPromptText("Filter Characters:");
         filteringOptionsBox.getItems().addAll("All characters", "Only letters", "Only numbers", "Only special characters");
-        filteringOptionsBox.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        filteringOptionsBox.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         filteringOptionsBox.setOnAction(e -> filterCharacters(e));
         
         percentageOptionsBox.setLayoutX(497); percentageOptionsBox.setLayoutY(533);
         percentageOptionsBox.setPrefHeight(31); percentageOptionsBox.setPrefWidth(210);
         percentageOptionsBox.setPromptText("Percentage Calculation:");
         percentageOptionsBox.getItems().addAll("Only the filtered characters", "All types of characters");
-        percentageOptionsBox.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        percentageOptionsBox.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         percentageOptionsBox.setOnAction(e -> percentageCalculation(e));
     }
     
@@ -331,16 +332,16 @@ public class GUI extends Application
         darkModeActivate.setText("Dark Mode");
         darkModeActivate.setLayoutX(599); darkModeActivate.setLayoutY(27);
         darkModeActivate.setPrefHeight(20); darkModeActivate.setPrefWidth(110);
-        darkModeActivate.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        darkModeActivate.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
 
         textForAnalysis.setLayoutX(35); textForAnalysis.setLayoutY(221);
         textForAnalysis.setPrefHeight(31); textForAnalysis.setPrefWidth(673);
         textForAnalysis.setPromptText("Enter text");
-        textForAnalysis.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        textForAnalysis.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
         
         displayText.setLayoutX(36); displayText.setLayoutY(467);
         displayText.setPrefHeight(47); displayText.setPrefWidth(673);
-        displayText.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+        displayText.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
     }
     
 	@Override
@@ -1015,7 +1016,7 @@ public class GUI extends Application
 		popOutBarChart.setPrefWidth(1920);
 		popOutBarChart.setLegendVisible(false);
 		popOutBarChart.setVerticalGridLinesVisible(false);
-		popOutBarChart.setStyle("-fx-font-size: "+button_Chart_Table_ComboBox_Other_FontSize);
+		popOutBarChart.setStyle(button_Chart_Table_ComboBox_Other_FontSize);
 		Stage stage = new Stage();
 		VBox vbox = new VBox(popOutBarChart);
 		Scene scene = new Scene(vbox, 0, 0);
