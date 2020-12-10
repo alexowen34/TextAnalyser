@@ -131,6 +131,6 @@
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<sonar.exclusions>com/myfirstapplication/GUI.java</sonar.exclusions>
+ 		<sonar.exclusions>src/main/java/GUI.java</sonar.exclusions>
 	</properties>
 </project>
