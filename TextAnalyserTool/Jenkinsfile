@@ -32,6 +32,13 @@ pipeline {
         }
       }
     }
+    stage('Prepare Jacoco Test Coverage for SonarQube') {
+      steps {
+        dir("TextAnalyserTool") {
+          bat 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent'
+        }
+      }
+    }
     stage('SonarQube Analysis') {
       steps {
 	/*
@@ -41,10 +48,9 @@ pipeline {
 	*/
         withSonarQubeEnv('SonarQubeServer') {
           dir("TextAnalyserTool") {
-          	bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
             bat 'mvn sonar:sonar'
           }
-	}
+		}
       }
     }
   }
