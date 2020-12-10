@@ -41,6 +41,7 @@ pipeline {
 	*/
         withSonarQubeEnv('SonarQubeServer') {
           dir("TextAnalyserTool") {
+          	bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
             bat 'mvn sonar:sonar'
           }
 	}

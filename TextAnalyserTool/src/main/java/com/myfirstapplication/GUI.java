@@ -221,7 +221,7 @@ public class GUI extends Application
     	displayAnalysisTypeHeader.setText("Please select the type of analysis you would like to perform:");
 
         importFileSuccessMessage.setLayoutX(167); importFileSuccessMessage.setLayoutY(148);
-        importFileSuccessMessage.setStyle("-fx-text-fill: #12a454");
+        importFileSuccessMessage.setStyle(button_Chart_Table_ComboBox_Other_FontSize+"; -fx-text-fill: #12a454");
         importFileSuccessMessage.setText("Your text has been imported successfully!");
         
         displayTextHeader.setLayoutX(36); displayTextHeader.setLayoutY(422);
@@ -490,6 +490,7 @@ public class GUI extends Application
     	
     	File file = fileChoose.showOpenDialog(null);
     	HandleTextFiles handleTxtFile = new HandleTextFiles(file.getAbsolutePath());
+		importFileSuccessMessage.setVisible(true);
 		textToBeAnalysed = handleTxtFile.fileToString();
 		paragraphCount = handleTxtFile.getParagraphCount();
     }
