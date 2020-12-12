@@ -32,14 +32,14 @@ pipeline {
         }
       }
     }
-    stage('Prep Jacoco Test Coverage for SonarQube') {
+    stage('Prep: Jacoco Test Coverage for SonarQube') {
       steps {
         dir("TextAnalyserTool") {
           bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
         }
       }
     }
-    stage('SonarQube Analysis') {
+    stage('Run: SonarQube Analysis') {
       steps {
 	/*
         dir("../../../../../sonarqube-7.9.5\\sonarqube-7.9.5\\bin\\windows-x86-64") {
@@ -49,21 +49,23 @@ pipeline {
         withSonarQubeEnv('SonarQubeServer') {
           dir("TextAnalyserTool") {
             bat 'mvn sonar:sonar'
-            timeout(time: 3, unit: 'MINUTES') {
-              echo "Initializing quality gates"
-              script {
-              	bat 'sleep 5'
-                def result = waitForQualityGate()
-                if (result.status != 'OK') {
-                  error "Quality gate failed with result: ${result.status}"
-                }
-                else {
-                  echo "Quality gate passed with result: ${result.status}"
-                }
-              }
-            }
           }
 		}
+      }
+    }
+    stage('Results: SonarQube Analysis') {
+      timeout(time: 3, unit: 'MINUTES') {
+        echo "Initializing quality gates"
+        script {
+          bat 'sleep 5'
+          def result = waitForQualityGate()
+          if (result.status != 'OK') {
+            error "Quality gate failed with result: ${result.status}"
+          }
+          else {
+            echo "Quality gate passed with result: ${result.status}"
+          }
+        }
       }
     }
   }
