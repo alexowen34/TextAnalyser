@@ -56,7 +56,8 @@ pipeline {
     stage('Results: SonarQube Analysis') {
       steps {
         timeout(time: 3, unit: 'MINUTES') {
-          echo "Initializing quality gates"
+          echo "Initializing quality gates"]
+          sleep(10)
           script {
             def result = waitForQualityGate()
             if (result.status != 'OK') {
