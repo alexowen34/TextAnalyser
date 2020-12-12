@@ -1,13 +1,15 @@
 /*
  * The project master branch is automatically checked out from GitHub repo into the Jenkins workspace.
- * This pipeline script checks there is no compilation errors across the project and then runs JUnit tests.
+ * Pipeline script starts by checking there is no compilation errors across the project and then runs JUnit tests.
  * It's worth noting that the JUnit tests all run twice as TestSuite.java is also executed during JUnit test stage.
+ * Pipeline then runs SonarQube analysis and uses Jacoco to calculate test coverage.
  * Several Jenkins plugins are required to run this such as:
  * 	- All default suggested plugins
  *  - Maven Integration plugin
  *  - Pipeline Maven Integration Plugin
  *  - JUnit Attachments Plugin
- * Also, Jenkins should be using Java 8 (JDK 8) in it's global and system configuration.
+ *  - SonarQube Scanner
+ * Also, Jenkins should be using Java 11 (JDK 11) in it's global and system configuration.
 */
 
 pipeline {
