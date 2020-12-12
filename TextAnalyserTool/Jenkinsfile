@@ -53,10 +53,10 @@ pipeline {
               echo "Initializing quality gates"
               def result = waitForQualityGate()
               if (result.status != 'OK') {
-                error "Quality gate failed with result: $(result.status)"
+                error "Quality gate failed with result: ${result.status}"
               }
               else {
-                echo "Quality gate passed with result: $(result.status)"
+                echo "Quality gate passed with result: ${result.status}"
               }
             }
           }
