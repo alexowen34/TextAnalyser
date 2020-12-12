@@ -54,16 +54,18 @@ pipeline {
       }
     }
     stage('Results: SonarQube Analysis') {
-      timeout(time: 3, unit: 'MINUTES') {
-        echo "Initializing quality gates"
-        script {
-          bat 'sleep 5'
-          def result = waitForQualityGate()
-          if (result.status != 'OK') {
-            error "Quality gate failed with result: ${result.status}"
-          }
-          else {
-            echo "Quality gate passed with result: ${result.status}"
+      steps {
+        timeout(time: 3, unit: 'MINUTES') {
+          echo "Initializing quality gates"
+          script {
+            bat 'sleep 5'
+            def result = waitForQualityGate()
+            if (result.status != 'OK') {
+              error "Quality gate failed with result: ${result.status}"
+            }
+            else {
+              echo "Quality gate passed with result: ${result.status}"
+            }
           }
         }
       }
