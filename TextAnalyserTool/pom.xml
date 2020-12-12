@@ -132,10 +132,10 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<sonar.coverage.exclusions>
-	      **/GUI.java,
-	      **/Main.java,
-	      **/CreatePieChartData.java,
-	      **/DecimalPlaces.java
-    	</sonar.coverage.exclusions>
+			**/GUI.java,
+			**/Main.java,
+			**/CreatePieChartData.java,
+			**/DecimalPlaces.java
+		</sonar.coverage.exclusions>
 	</properties>
 </project>
