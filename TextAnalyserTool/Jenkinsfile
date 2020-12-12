@@ -51,6 +51,7 @@ pipeline {
             bat 'mvn sonar:sonar'
             timeout(time: 3, unit: 'MINUTES') {
               echo "Initializing quality gates"
+              bat 'sleep 5'
               def result = waitForQualityGate()
               if (result.status != 'OK') {
                 error "Quality gate failed with result: ${result.status}"
