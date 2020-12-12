@@ -133,7 +133,9 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<sonar.exclusions>
 	      **/GUI.java,
-	      **/Main.java
+	      **/Main.java,
+	      **/CreatePieChartData.java,
+	      **/DecimalPlaces.java
     	</sonar.exclusions>
 	</properties>
 </project>
