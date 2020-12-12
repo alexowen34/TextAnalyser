@@ -4,7 +4,7 @@
  * It's worth noting that the JUnit tests all run twice as TestSuite.java is also executed during JUnit test stage.
  * Pipeline then runs SonarQube analysis and uses Jacoco to calculate test coverage.
  * Several Jenkins plugins are required to run this such as:
- * 	- All default suggested plugins
+ *  - All default suggested plugins
  *  - Maven Integration plugin
  *  - Pipeline Maven Integration Plugin
  *  - JUnit Attachments Plugin
