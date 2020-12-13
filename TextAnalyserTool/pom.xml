@@ -127,6 +127,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<finalName>Text Analyser</finalName>
 	</build>
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -137,6 +138,5 @@
 			**/CreatePieChartData.java,
 			**/DecimalPlaces.java
 		</sonar.coverage.exclusions>
-		<jar.finalName>Text Analyser</jar.finalName>
 	</properties>
 </project>
