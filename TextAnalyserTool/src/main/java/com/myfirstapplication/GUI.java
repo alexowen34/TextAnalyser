@@ -69,8 +69,8 @@ public class GUI extends Application {
 	private static Button displayCharacterAnalysis = new Button(), displayWordAnalysis = new Button(), displaySentimentAnalysis = new Button(), displayPartsOfSpeechAnalysis = new Button(), getFilePath = new Button(), sortAscButton = new Button(), sortDescButton = new Button(), removeDecimal = new Button(), addDecimal = new Button(), displaySentimentTable = new Button(), displaySentimentPieChart = new Button(), popOutBarChart = new Button(), displayCharacterPieChart = new Button(), displayCharacterBarChart = new Button();
 	private static Button[] arrayOfTopButtons = {displayCharacterAnalysis, displayWordAnalysis, displaySentimentAnalysis, displayPartsOfSpeechAnalysis, getFilePath};
 	private static Button[] arrayOfBottomButtons = {sortAscButton, sortDescButton, removeDecimal, addDecimal, displaySentimentTable, displaySentimentPieChart, popOutBarChart, displayCharacterPieChart, displayCharacterBarChart};
-	private static String[] blackIconsFilePaths = {"file:Assets/Icons/Black/BLACK_SortASCIcon.png", "file:Assets/Icons/Black/BLACK_SortDESCIcon.png", "", "", "file:Assets/Icons/Black/BLACK_TableIcon.png", "file:Assets/Icons/Black/BLACK_PieChartIcon.png", "file:Assets/Icons/Black/BLACK_MagnifyingGlassIcon.png", "file:Assets/Icons/Black/BLACK_PieChartIcon.png", "file:Assets/Icons/Black/BLACK_BarChartIcon.png"};
-	private static String[] whiteIconsFilePaths = {"file:Assets/Icons/White/WHITE_SortASCIcon.png", "file:Assets/Icons/White/WHITE_SortDESCIcon.png", "", "", "file:Assets/Icons/White/WHITE_TableIcon.png", "file:Assets/Icons/White/WHITE_PieChartIcon.png", "file:Assets/Icons/White/WHITE_MagnifyingGlassIcon.png", "file:Assets/Icons/White/WHITE_PieChartIcon.png", "file:Assets/Icons/White/WHITE_BarChartIcon.png"};
+	private static String[] blackIconsFilePaths = {"file:src/main/resources/Assets/Icons/Black/BLACK_SortASCIcon.png", "file:src/main/resources/Assets/Icons/Black/BLACK_SortDESCIcon.png", "", "", "file:src/main/resources/Assets/Icons/Black/BLACK_TableIcon.png", "file:src/main/resources/Assets/Icons/Black/BLACK_PieChartIcon.png", "file:src/main/resources/Assets/Icons/Black/BLACK_MagnifyingGlassIcon.png", "file:src/main/resources/Assets/Icons/Black/BLACK_PieChartIcon.png", "file:src/main/resources/Assets/Icons/Black/BLACK_BarChartIcon.png"};
+	private static String[] whiteIconsFilePaths = {"file:src/main/resources/Assets/Icons/White/WHITE_SortASCIcon.png", "file:src/main/resources/Assets/Icons/White/WHITE_SortDESCIcon.png", "", "", "file:src/main/resources/Assets/Icons/White/WHITE_TableIcon.png", "file:src/main/resources/Assets/Icons/White/WHITE_PieChartIcon.png", "file:src/main/resources/Assets/Icons/White/WHITE_MagnifyingGlassIcon.png", "file:src/main/resources/Assets/Icons/White/WHITE_PieChartIcon.png", "file:src/main/resources/Assets/Icons/White/WHITE_BarChartIcon.png"};
 	private static ComboBox<String> filteringOptionsBox = new ComboBox<String>(), percentageOptionsBox = new ComboBox<String>();
 	private static TableView<LanguageAnalysis> sentimentAnalysisTable = new TableView<LanguageAnalysis>();
 	private static TableColumn<LanguageAnalysis, String> sentiment = new TableColumn<LanguageAnalysis, String>(), sentence = new TableColumn<LanguageAnalysis, String>();
@@ -82,7 +82,7 @@ public class GUI extends Application {
 	private static TableView<LanguageAnalysis> partsOfSpeechAnalysisTable = new TableView<LanguageAnalysis>();
 	private static TableColumn<LanguageAnalysis, String> word = new TableColumn<LanguageAnalysis, String>(), POStag = new TableColumn<LanguageAnalysis, String>();
 	private ToggleButton darkModeActivate = new ToggleButton();
-    private final String darkModeFilePathCSS = "file:Styling&Layout/DarkMode.css";
+    private final String darkModeFilePathCSS = "file:src/main/resources/Styling&Layout/DarkMode.css";
     private static boolean darkModeActivated;
     private static final String button_Chart_Table_ComboBox_Other_FontSize = "-fx-font-size: 15px";
     private static final String labelFontSize = "-fx-font-size: 17px";
@@ -384,7 +384,7 @@ public class GUI extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		/*
 		 * The below commented out code links to the FXML file incase it's needed in the
-		 * future. root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+		 * future. root = FXMLLoader.load(getClass().getResource("src/main/resources/Styling&Layout/Main.fxml"));
 		 */
 
 		initialize();

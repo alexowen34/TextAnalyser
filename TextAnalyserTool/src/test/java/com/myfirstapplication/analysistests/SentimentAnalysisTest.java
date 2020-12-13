@@ -72,7 +72,7 @@ public class SentimentAnalysisTest
 			 "[0.00, 0.00, 100.00, 0.00, 0.00]", 1, "100.00"},
 			
 			//Test case #1
-			{2,"TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase1.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 0, 
+			{2,"src/test/resources/TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase1.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 0, 
 			 "[Very positive, Positive, Neutral, Negative, Very negative]", "[My name is Alex Owen.]", "[Neutral]", "[0, 0, 1, 0, 0]",
 			 "[0.00, 0.00, 100.00, 0.00, 0.00]", 1, "100.00"},
 			
@@ -82,7 +82,7 @@ public class SentimentAnalysisTest
 			 "[0.00, 0.00, 100.00, 0.00, 0.00]", 1, "100.00"},
 			
 			//Test case #3
-			{2,"TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase3.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 0, 
+			{2,"src/test/resources/TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase3.txt", "", 0, "tokenize, ssplit, pos, parse, sentiment", 0, 
 			 "[Very positive, Positive, Neutral, Negative, Very negative]", "[My name is Alex Owen.]", "[Neutral]", "[0, 0, 1, 0, 0]",
 			 "[0.00, 0.00, 100.00, 0.00, 0.00]", 1, "100.00"},
 			
@@ -132,21 +132,21 @@ public class SentimentAnalysisTest
 		     "[2, 2, 4, 3, 2]", "[15.38, 15.38, 30.77, 23.08, 15.38]", 13, "100.00"},
 			
 			//Test case #12
-			{2,"TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase12.txt", "",
+			{2,"src/test/resources/TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase12.txt", "",
 		     0, "tokenize, ssplit, pos, parse, sentiment", 0, "[Very positive, Positive, Neutral, Negative, Very negative]",
 		     "[The service I received was outstanding!, It should be noted that the neighbours were really annoying., I have now returned home., I was throughly impressed on how comfortable the flight was - I'm so so happy with the quality!, I can't believe a 4 star hotel would serve this., Overall, I would this recommend travel company., All your employees should be proud., Sadly, I also have a complaint about the food... It was disgusting!, The flight took around 3 hours., Thanks, Alex Owen., It was incredibly dissapointing and I'm very very annoyed!, But this specific hotel resutrant should be avoided at all costs!, Please can this be passed on to the relevent people.]",
 		     "[Very positive, Negative, Neutral, Very positive, Negative, Positive, Positive, Very negative, Neutral, Neutral, Very negative, Negative, Neutral]", 
 		     "[2, 2, 4, 3, 2]", "[15.38, 15.38, 30.77, 23.08, 15.38]", 13, "100.00"},
 			
 			//Test case #13
-			{2,"TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase12.txt", "",
+			{2,"src/test/resources/TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase12.txt", "",
 		     0, "tokenize, ssplit, pos, parse, sentiment", 2, "[Very positive, Positive, Neutral, Negative, Very negative]",
 		     "[The service I received was outstanding!, It should be noted that the neighbours were really annoying., I have now returned home., I was throughly impressed on how comfortable the flight was - I'm so so happy with the quality!, I can't believe a 4 star hotel would serve this., Overall, I would this recommend travel company., All your employees should be proud., Sadly, I also have a complaint about the food... It was disgusting!, The flight took around 3 hours., Thanks, Alex Owen., It was incredibly dissapointing and I'm very very annoyed!, But this specific hotel resutrant should be avoided at all costs!, Please can this be passed on to the relevent people.]",
 		     "[Very positive, Negative, Neutral, Very positive, Negative, Positive, Positive, Very negative, Neutral, Neutral, Very negative, Negative, Neutral]", 
 		     "[2, 2, 4, 3, 2]", "[15.38, 15.38, 30.77, 23.08, 15.38]", 13, "100.00"},
 			
 			//Test case #14
-			{2,"TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase12.txt", "",
+			{2,"src/test/resources/TestData&Documentation/LanguageAnalysisTestFiles/LanguageAnalysis-TestCase12.txt", "",
 		     0, "tokenize, ssplit, pos, parse, sentiment", 3, "[Very positive, Positive, Neutral, Negative, Very negative]",
 		     "[The service I received was outstanding!, It should be noted that the neighbours were really annoying., I have now returned home., I was throughly impressed on how comfortable the flight was - I'm so so happy with the quality!, I can't believe a 4 star hotel would serve this., Overall, I would this recommend travel company., All your employees should be proud., Sadly, I also have a complaint about the food... It was disgusting!, The flight took around 3 hours., Thanks, Alex Owen., It was incredibly dissapointing and I'm very very annoyed!, But this specific hotel resutrant should be avoided at all costs!, Please can this be passed on to the relevent people.]",
 		     "[Very positive, Negative, Neutral, Very positive, Negative, Positive, Positive, Very negative, Neutral, Neutral, Very negative, Negative, Neutral]", 
