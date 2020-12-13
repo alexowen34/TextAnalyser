@@ -1,3 +1,0 @@
-Including this text file so that this folder shows up if the GitHub repo is ever cloned into an IDE. 
-
-Without this folder included, there would be a build error.
