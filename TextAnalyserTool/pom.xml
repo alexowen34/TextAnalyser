@@ -137,5 +137,6 @@
 			**/CreatePieChartData.java,
 			**/DecimalPlaces.java
 		</sonar.coverage.exclusions>
+		<jar.finalName>Text Analyser</jar.finalName>
 	</properties>
 </project>
