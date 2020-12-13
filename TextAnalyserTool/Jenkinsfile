@@ -72,7 +72,7 @@ pipeline {
         }
       }
     }
-    stage('Package Artifcate') {
+    stage('Package into JAR Artifcate') {
       steps {
         withMaven(maven : 'Maven3') {
           dir("TextAnalyserTool") {
