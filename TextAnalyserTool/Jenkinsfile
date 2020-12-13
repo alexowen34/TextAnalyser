@@ -72,5 +72,14 @@ pipeline {
         }
       }
     }
+    stage('Package Artifcate') {
+      steps {
+        withMaven(maven : 'Maven3') {
+          dir("TextAnalyserTool") {
+            bat 'mvn clean package'
+          }
+        }
+      }
+    }
   }
 }
