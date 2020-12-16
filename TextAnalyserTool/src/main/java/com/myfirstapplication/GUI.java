@@ -743,6 +743,7 @@ public class GUI extends Application {
 					data.getNode().setStyle("-fx-pie-color: #23A400");
 			}
 			sentimentAnalysisPieChart.setLegendVisible(false);
+			sentimentAnalysisPieChart.layout();
 			sentiment.setCellValueFactory(new PropertyValueFactory<LanguageAnalysis, String>("sentiments"));
 			sentence.setCellValueFactory(new PropertyValueFactory<LanguageAnalysis, String>("sentences"));
 			sentimentAnalysisTable.setItems(langAnalysis.sentimentTableData());
