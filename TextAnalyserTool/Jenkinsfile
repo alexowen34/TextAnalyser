@@ -59,7 +59,7 @@ pipeline {
       steps {
         timeout(time: 3, unit: 'MINUTES') {
           echo "Initializing quality gates"
-          sleep(10)
+          sleep(15)
           script {
             def result = waitForQualityGate()
             if (result.status != 'OK') {
