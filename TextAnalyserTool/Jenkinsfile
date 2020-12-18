@@ -52,7 +52,7 @@ pipeline {
           dir("TextAnalyserTool") {
             bat 'mvn sonar:sonar'
           }
-	}
+		}
       }
     }
     stage('Results: SonarQube Analysis') {
