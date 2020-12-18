@@ -22,11 +22,11 @@ import javafx.scene.layout.StackPane;
  * to be analysed from the GUI class.
  */
 public class CharacterAnalysis extends TextToBeAnalysed {
-	
+
 	/*
 	 * Below is a range of global private variables that can be accessed across all
 	 * methods in this class.
-	*/
+	 */
 
 	// Below variables are populated via the constructor method.
 	private int percentageCalcType;
@@ -45,10 +45,10 @@ public class CharacterAnalysis extends TextToBeAnalysed {
 	private double[] summaryPercentage;
 	private String[] rowDescription = { "Letters", "Numbers", "Special Characters" };
 
-	/* 
+	/*
 	 * Constructor method that is used by GUI class to pass in required data to this
 	 * object.
-	*/
+	 */
 	public CharacterAnalysis(String referenceOption, int percentageCalcType, int sortingOptionType) {
 		this.referenceOption = referenceOption;
 		char[] character = referenceOption.toCharArray();
@@ -57,7 +57,7 @@ public class CharacterAnalysis extends TextToBeAnalysed {
 		this.sortingOptionType = sortingOptionType;
 	}
 
-	/* 
+	/*
 	 * Constructor method that is used to pass in the relevant data for testing
 	 * (CharacterAnalysisTest.java).
 	 */
@@ -205,7 +205,7 @@ public class CharacterAnalysis extends TextToBeAnalysed {
 		return rowDescription;
 	}
 
-	/* 
+	/*
 	 * This method returns the count for the summary chart. Method is used in this
 	 * project only for testing purposes.
 	 */
@@ -222,16 +222,16 @@ public class CharacterAnalysis extends TextToBeAnalysed {
 	}
 
 	/*
-	 *  This method returns the total count frequency. It is used in this project
-	 *  only for testing purposes.
+	 * This method returns the total count frequency. It is used in this project
+	 * only for testing purposes.
 	 */
 	public int getTotalCount() {
 		return countSum = Arrays.stream(countFrequencyOutput).sum();
 	}
 
 	/*
-	 *  This method returns the total percentage/relative frequency. It is used in
-	 *  this project only for testing purposes.
+	 * This method returns the total percentage/relative frequency. It is used in
+	 * this project only for testing purposes.
 	 */
 	public double getTotalPercentage() {
 		return percentageSum = Arrays.stream(percentageFrequencyOutput).sum();
@@ -281,5 +281,5 @@ public class CharacterAnalysis extends TextToBeAnalysed {
 				summaryCount);
 		return populatePieChartData.pieChartData();
 	}
-	
+
 }

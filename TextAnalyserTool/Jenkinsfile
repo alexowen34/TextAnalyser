@@ -2,6 +2,7 @@
  * The project master branch is automatically checked out from GitHub repo into the Jenkins workspace.
  * Pipeline script starts by checking there is no compilation errors across the project and then runs JUnit tests.
  * Pipeline then runs SonarQube analysis and uses Jacoco to calculate test coverage.
+ * Application is then packaged up into a JAR file.
  * Several Jenkins plugins are required to run this such as:
  *  - All default suggested plugins
  *  - Maven Integration plugin
@@ -51,7 +52,7 @@ pipeline {
           dir("TextAnalyserTool") {
             bat 'mvn sonar:sonar'
           }
-	}
+	    }
       }
     }
     stage('Results: SonarQube Analysis') {

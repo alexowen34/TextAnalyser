@@ -1,6 +1,8 @@
-//Planned features to add in:
-//#1: Practice writing and recording data to a DB i.e. the users text and it's results.
-//#2: Add option to export to Excel.
+/*
+ * Planned features to add in:
+ * #1: Practice writing and recording data to a DB i.e. the users text and it's results.
+ * #2: Add option to export to Excel.
+ */
 
 package com.myfirstapplication;
 
@@ -89,6 +91,7 @@ public class GUI extends Application {
     private AnchorPane root = new AnchorPane();
     
 	private void setupTopButtons() {
+		
 		// Set font size in all top buttons to the specified global variable font size
 		for (int i = 0; i < arrayOfTopButtons.length; i++) {
 			arrayOfTopButtons[i].setStyle(button_Chart_Table_ComboBox_Other_FontSize);
@@ -179,8 +182,11 @@ public class GUI extends Application {
 		Image[] img = new Image[filePaths.length];
 		ImageView[] view = new ImageView[filePaths.length];
 		for (int i = 0; i < arrayOfBottomButtons.length; i++) {
-			// Leaves out buttons at index 2 and 3 in the array as they don't require
-			// images.
+			
+			/*
+			 * Leaves out buttons at index 2 and 3 in the array as they don't require
+			 * images.
+			 */
 			if (i != 2 && i != 3) {
 				img[i] = new Image(filePaths[i]);
 				view[i] = new ImageView(img[i]);
@@ -382,15 +388,20 @@ public class GUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
 		/*
 		 * The below commented out code links to the FXML file incase it's needed in the
-		 * future. root = FXMLLoader.load(getClass().getResource("src/main/resources/Styling&Layout/Main.fxml"));
+		 * future.
 		 */
 
+		//root = FXMLLoader.load(getClass().getResource("src/main/resources/Styling&Layout/Main.fxml"));
+		
 		initialize();
 
-		// The below code calls methods to set up the JavaFX components i.e. set sizes,
-		// set layout, add images, add action events etc.
+		/* 
+		 * The below code calls methods to set up the JavaFX components i.e. set sizes,
+		 * set layout, add images, add action events etc.
+		 */
 		setupTopButtons();
 		setupBottomButtons();
 		addIconsToButtons(blackIconsFilePaths);
@@ -401,8 +412,10 @@ public class GUI extends Application {
 		setupRectangles();
 		setupOther();
 
-		// This code adds the JavaFX components, that were setup in the above methods,
-		// to the AnchorPane.
+		/* 
+		 * This code adds the JavaFX components, that were setup in the above methods,
+		 * to the AnchorPane.
+		 */
 		root.getChildren().add(inputBackgroundBox);
 		root.getChildren().add(applicationHeader);
 		root.getChildren().add(or);
@@ -444,8 +457,10 @@ public class GUI extends Application {
 
 		Scene scene = new Scene(root);
 
-		// The below code toggles on/off the CSS whenever the darkModeActivate button is
-		// clicked.
+		/* 
+		 * The below code toggles on/off the CSS whenever the darkModeActivate button is
+		 * clicked.
+		 */
 		darkModeActivate.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -474,16 +489,21 @@ public class GUI extends Application {
 		primaryStage.setTitle("Text Analyser");
 		primaryStage.setScene(scene);
 
-		// The below code configures the primary stage so that the width and height can
-		// not be made larger than the pref size.
+		/* 
+		 * The below code configures the primary stage so that the width and height can
+		 * not be made larger than the pref size.
+		 */
 		primaryStage.setMaxHeight(943);
 		primaryStage.setMaxWidth(757);
 		primaryStage.show();
 	}
 
 	private void initialize() {
-		// Hides the relevant JavaFX components for when the application starts. This
-		// method is called by the start method.
+		
+		/* 
+		 * Hides the relevant JavaFX components for when the application starts. This
+		 * method is called by the start method.
+		 */
 		importFileSuccessMessage.setVisible(false);
 		analysisBackgroundBox.setVisible(false);
 		displayTextHeader.setVisible(false);
@@ -528,8 +548,10 @@ public class GUI extends Application {
 			importFileSuccessMessage.setVisible(false);
 			textToBeAnalysed = textForAnalysis.getText();
 
-			// Sets paragraph count to 1 as the user enters text via a TextField so
-			// therefore won't be able to enter more than one paragraph.
+			/*
+			 * Sets paragraph count to 1 as the user enters text via a TextField so
+			 * therefore won't be able to enter more than one paragraph.
+			 */
 			paragraphCount = 1;
 		}
 	}
@@ -544,6 +566,7 @@ public class GUI extends Application {
 	}
 
 	private boolean emptyTextError() {
+		
 		/*
 		 * Code displays error message to the user if they haven't entered any text.
 		 * Method is called by the display analysis methods to prevent analysis being
@@ -613,8 +636,10 @@ public class GUI extends Application {
 			sortAscButton.setDisable(sortAscDisable);
 			sortDescButton.setDisable(sortDescDisable);
 
-			// The below if statement ensures that the CharacterAnalysis class isn't run
-			// again if only a decimal place is being changed.
+			/* 
+			 * The below if statement ensures that the CharacterAnalysis class isn't run
+			 * again if only a decimal place is being changed.
+			 */
 			if (decimalPlaceChange == false) {
 				charAnalysis = new CharacterAnalysis(charactersInScope, percentageCalculation, sortingOption);
 				charAnalysis.countCharFrequencies();
@@ -826,8 +851,10 @@ public class GUI extends Application {
 		sortDescButton.setDisable(false);
 		filteringOptionsBox.setDisable(false);
 
-		// Disables percentage calculation drop down if 'All characters' are selected to
-		// be displayed.
+		/* 
+		 * Disables percentage calculation drop down if 'All characters' are selected to
+		 * be displayed.
+		 */
 		try {
 			if (filteringOptionsBox.getValue().equals("All characters")) {
 				percentageOptionsBox.setDisable(true);
